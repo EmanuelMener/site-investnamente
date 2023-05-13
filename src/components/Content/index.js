@@ -16,17 +16,16 @@ const CustomPrevArrow = styled.button`
 `;
 
 // Componente estilizado para o botão "Next"
-const CustomNextArrow = styled.button`
-  /* Estilos personalizados aqui */
+/*const CustomNextArrow = styled.button`
+  
   width: 108px;
   height: 108px;
   background: #F4F4F5;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 66px;
-`;
+`;*/
 
 const Content = () => {
-  // Configurações do carrossel
   const settings = {
     dots: true,
     infinite: true,
@@ -35,8 +34,8 @@ const Content = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    prevArrow: <CustomPrevArrow />, // Componente estilizado para o botão "Prev"
-    nextArrow: <CustomNextArrow />, // Componente estilizado para o botão "Next"
+    //prevArrow: <CustomPrevArrow />, // Componente estilizado para o botão "Prev"
+    //nextArrow: <CustomNextArrow />, // Componente estilizado para o botão "Next"
   };
 
   return (
