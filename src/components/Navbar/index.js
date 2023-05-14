@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import * as C from "./style";
 import * as CC from "../Content"
-import { BiSearchAlt2, BiConversation, BiHelpCircle, BiNotification } from "react-icons/bi";
+import { BiSearchAlt2, BiConversation, BiHelpCircle, BiNotification, BiUpload } from "react-icons/bi";
 import { MdExitToApp } from "react-icons/md";
-
+import { AiOutlineCloudUpload } from "react-icons/ai";
 
 // Importações do db
 import * as EmailValidator from "email-validator";
@@ -15,6 +15,7 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupOpen2, setPopupOpen2] = useState(false);
+  const [popupOpen3, setPopupOpen3] = useState(false);
 
   const handleLogout = () => {
     auth.signOut();
@@ -27,6 +28,14 @@ const Navbar = () => {
 
   const handleProfileClick2 = () => {
     setPopupOpen2(!popupOpen2);
+  };
+
+  const handleProfileClick3 = () => {
+    setPopupOpen3(!popupOpen3);
+  };
+
+  const handleUpload = () => {
+    // Lógica para enviar o arquivo
   };
 
   return (
@@ -48,6 +57,45 @@ const Navbar = () => {
           </C.PopupContainerINFO>
         </C.btnInf>
         <C.btnSino><BiNotification /></C.btnSino>
+    
+        {(user?.email === "modooncontabilidade@gmail.com" || user?.email === "emenezes.jem@gmail.com") && (
+        <C.bntUpload onClick={handleProfileClick3}>
+          <AiOutlineCloudUpload />
+          <C.PopupContainerUPLOAD open={popupOpen3}>
+            <C.FormContainer>
+              <C.FormField>
+                <C.Label htmlFor="image">Imagem:</C.Label>
+                <C.Input type="file" id="image" accept="image/*" />
+              </C.FormField>
+              <C.FormField>
+                <C.Label htmlFor="video">Vídeo:</C.Label>
+                <C.Input type="file" id="video" accept="video/*" />
+              </C.FormField>
+              <C.FormField>
+                <C.Label htmlFor="audio">Áudio:</C.Label>
+                <C.Input type="file" id="audio" accept="audio/*" />
+              </C.FormField>
+              <C.FormField>
+                <C.Label htmlFor="title">Título:</C.Label>
+                <C.Input type="text" id="title" />
+              </C.FormField>
+              <C.FormField>
+                <C.Label htmlFor="description">Descrição:</C.Label>
+                <C.Textarea id="description" />
+              </C.FormField>
+              <C.Button onClick={handleUpload}>
+                Enviar
+                <C.bntUpload>
+                  <BiUpload/>
+                </C.bntUpload>
+              </C.Button>
+            </C.FormContainer>
+          </C.PopupContainerUPLOAD>
+        </C.bntUpload>
+        )}
+
+
+
         <C.btnPessoa onClick={handleProfileClick}>
           {user?.photoURL ? (
             <div style={{
@@ -106,5 +154,7 @@ const Navbar = () => {
     </C.Container>
   );
 };
+
+
 
 export default Navbar;

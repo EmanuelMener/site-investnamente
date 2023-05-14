@@ -4,50 +4,83 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import * as C from "./style";
-
-// Componente estilizado para o botão "Prev"
-const CustomPrevArrow = styled.button`
-  /* Estilos personalizados aqui */
-  width: 108px;
-  height: 108px;
-  background: #F4F4F5;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 66px;
-`;
-
-// Componente estilizado para o botão "Next"
-/*const CustomNextArrow = styled.button`
-  
-  width: 108px;
-  height: 108px;
-  background: #F4F4F5;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 66px;
-`;*/
+import "./slider.css";
 
 const Content = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 2.3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    //prevArrow: <CustomPrevArrow />, // Componente estilizado para o botão "Prev"
-    //nextArrow: <CustomNextArrow />, // Componente estilizado para o botão "Next"
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
   };
 
   return (
     <C.Container>
-      <C.ContainerIMG>
+      <C.ContentContainer>
+        <h1>Em Alta</h1>
         <Slider {...settings}>
-          <C.CarouselImage src="img/episodio-001.png" alt="Imagem 1" />
-          <C.CarouselImage src="img/episodio-002.png" alt="Imagem 2" />
-          <C.CarouselImage src="img/episodio-001.png" alt="Imagem 3" />
-          {/* Adicione mais imagens conforme necessário */}
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          <C.CardContainer>
+            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
+            <C.CardTitle>Título do Episódio 1</C.CardTitle>
+            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+          </C.CardContainer>
+
+          {/* Adicione mais cards conforme necessário */}
         </Slider>
-      </C.ContainerIMG>
+      </C.ContentContainer>
     </C.Container>
   );
 };

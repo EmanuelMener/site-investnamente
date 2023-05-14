@@ -54,7 +54,7 @@ export const barraProgressoINPUT = styled.input`
 `;
 
 export const contaEnav = styled.div`
-  width: 358px;
+  width: 25rem;
   height: 45px;
 
   display: flex;
@@ -96,6 +96,19 @@ export const btnInf = styled.button`
 `;
 
 export const btnSino = styled.button`
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #F4F4F5;
+    background: none;
+    border: none;
+    cursor:pointer;
+`;
+
+export const bntUpload = styled.button`
     height: 100%;
     width: auto;
     display: flex;
@@ -241,4 +254,111 @@ export const iconINFO = styled.div`
   height: auto;
   font-size: 2.5rem;
   display: flex;
+`;
+
+//upload botão
+
+export const PopupContainerUPLOAD = styled.div`
+  position: fixed;
+  display: ${props => (props.open ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  top: 80px; /* Altura da navbar */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.92); /* Cor escura com transparência */
+  z-index: 9999;
+`;
+
+
+//FORM
+
+export const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 90%;
+  max-width: 50rem;
+  margin: 0 auto;
+  border: 1px solid #303135;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #17181A;
+`;
+
+export const FormField = styled.div`
+  margin-bottom: 1rem;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+`;
+
+export const Label = styled.label`
+  font-size: 1rem;
+`;
+
+export const Input = styled.input`
+  width: 21rem; 
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #303135;
+  background-color: #26272B;
+  color: #F4F4F5;
+  resize: vertical;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+
+  ::placeholder {
+    color: #909193;
+  }
+
+  :focus {
+    border-color: #E80050;
+  }
+`;
+
+export const Textarea = styled.textarea`
+  width: 21rem;
+  height: 8rem;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #303135;
+  background-color: #26272B;
+  color: #F4F4F5;
+  resize: vertical;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+
+  ::placeholder {
+    color: #909193;
+  }
+
+  :focus {
+    border-color: #E80050;
+  }
+`;
+
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 11.5rem;
+  background-color: #E80050;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width:60%;
+  font-size:18px;
+
+  &:hover {
+    background-color: #BB0035;
+  }
 `;
