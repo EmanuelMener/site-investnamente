@@ -148,16 +148,31 @@ export const PopupContainer = styled.div`
   position: absolute;
   display: ${props => (props.open ? "flex" : "none")};
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
   height: 20rem;
-  width: 14rem;
+  width: 17rem;
   margin-top: 3rem;
+  padding:2.3rem 0;
   right: 2rem;
   background-color: #070709;
   border: 1px solid #303135;
-  border-radius: 8px;
+  border-radius: 8px 0 8px 8px;
 
   transition: all 0.3s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -1px;
+    border-style: solid;
+    background-color: #303135;
+    transform: translateY(-50%);
+    border-width: 20px 0 20px 20px;
+    border-color: transparent transparent transparent #070709;  
+    border-top: none; /* Adicionando esta linha para remover o triângulo extra */
+    }
 `;
 
 
@@ -171,7 +186,7 @@ export const BtnExit = styled.button`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #26272c99;
+    background-color: transparent;
     color: #58585C;
     font-weight: bold;
     font-size: 1rem;
@@ -189,12 +204,59 @@ export const BtnExit = styled.button`
 `;
 
 
+export const BtnPerfil = styled.div`
+    width: 90%;
+    height: 5rem;
+    
+
+    border: 1px solid #26272B;
+
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    justify-content: space-between;
+    background-color: #26272c99;
+    color: #58585C;
+    font-weight: bold;
+    font-size: 1rem;
+    
+
+    padding: 1rem;
+
+    border-radius: 8px;
+
+    &:hover {
+      background-color: #26272B;
+      color: #F4F4F5;
+    }
+    transition: all 0.3s ease;
+`;
+
+export const fotoPerfil = styled.div`
+    margin-top: -1.9rem !important;
+    background-color: #f4f4f4;
+    border-radius: 50%;
+`;
+
+
+
 export const labelExit = styled.div`
-    width: 40%;
+    width: 70%;
     height: auto;
     display: flex;
     justify-content: space-between;
+   
     align-items: center;
+`;
+
+
+export const labelEmail = styled.div`
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
 `;
 
 

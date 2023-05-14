@@ -3,6 +3,7 @@ import * as C from "./style";
 import * as CC from "../Content"
 import { BiSearchAlt2, BiConversation, BiHelpCircle, BiNotification, BiUpload } from "react-icons/bi";
 import { MdExitToApp } from "react-icons/md";
+import { CgTrash } from "react-icons/cg";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
 // Importações do db
@@ -45,8 +46,11 @@ const Navbar = () => {
         <C.barraProgressoICON><BiSearchAlt2 /></C.barraProgressoICON>
         <C.barraProgressoINPUT placeholder="Pesquisar por episódio..." />
       </C.barraProgresso>
+
       <C.contaEnav>
+
         <C.btnContato> CONTATO</C.btnContato>
+
         <C.btnInf onClick={handleProfileClick2}>
           <BiHelpCircle />
           <C.PopupContainerINFO open={popupOpen2}>
@@ -56,6 +60,7 @@ const Navbar = () => {
             </C.TEXTinfo>
           </C.PopupContainerINFO>
         </C.btnInf>
+
         <C.btnSino><BiNotification /></C.btnSino>
     
         {(user?.email === "modooncontabilidade@gmail.com" || user?.email === "emenezes.jem@gmail.com") && (
@@ -94,8 +99,6 @@ const Navbar = () => {
         </C.bntUpload>
         )}
 
-
-
         <C.btnPessoa onClick={handleProfileClick}>
           {user?.photoURL ? (
             <div style={{
@@ -120,36 +123,61 @@ const Navbar = () => {
             )}
 
           <C.PopupContainer open={popupOpen}>
-            <C.BtnExit onClick={handleLogout}>
+
+            <C.BtnPerfil>
+              <C.fotoPerfil>
                 {user?.photoURL ? (
-                <div style={{
-                  width: "45px",
-                  height: "45px",
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  border: "1px solid #26272B",
-                }}>
-                  <img
-                    src={user.photoURL}
-                    alt="User"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover"
-                    }}
-                  />
-                </div>
-                ) : (
-                    <span>Usuário</span>
-                  )}
+                  <div style={{
+                    width: "45px",
+                    height: "45px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    border: "1px solid #26272B",
+                  }}>
+                    <img
+                      src={user.photoURL}
+                      alt="User"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover"
+                      }}
+                    />
+                  </div>
+                  ) : (
+                      <span>Usuário</span>
+                    )}
+              </C.fotoPerfil>
+
+
+              <C.labelEmail>
+                <span>{user?.email}</span>
+              </C.labelEmail>
+              
+
+            </C.BtnPerfil>
+
+            <C.BtnExit onClick={handleLogout}>
 
               <C.labelExit>
                 Exit <C.iconExit><MdExitToApp/></C.iconExit>
               </C.labelExit>
+              
 
             </C.BtnExit>
+
+            <C.BtnExit onClick={handleLogout}>
+
+              <C.labelExit>
+                Excluir Conta <C.iconExit><CgTrash/></C.iconExit>
+              </C.labelExit>
+              
+
+            </C.BtnExit>
+
           </C.PopupContainer>
         </C.btnPessoa>
+
       </C.contaEnav>
     </C.Container>
   );
