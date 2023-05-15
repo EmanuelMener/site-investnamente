@@ -13,7 +13,7 @@ const Login = () => {
         <C.Div>
             <h1>Ouça o nosso podcast <BiHeadphone /></h1>
             <C.Container>
-                <img src="img/logo-investnamente.jpg" alt="Logo Investnament" />
+                <img src="img/logo-investnamente.jpg" alt="Logo Investnament" width={"300"} />
                 <C.Button onClick={handleSignin}><SiGoogle /><C.Span></C.Span> Login com Google</C.Button>
             </C.Container>
         </C.Div>
