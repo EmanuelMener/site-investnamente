@@ -171,7 +171,6 @@ const Content = () => {
           ))}
         </Slider>
       </C.ContentContainerComentarios>
-
     </C.Container>
   );
 };

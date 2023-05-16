@@ -2,16 +2,35 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: calc(100vw - 20rem);
-  height: 100vh;
+  height: 100vh; /* Subtrai a altura do Navbar do total da altura da viewport */
   margin-left: 20rem;
   background-color: #070709;
   color: white;
   position: relative;
   z-index: 1;
-  display: flex; /* Adicione essa propriedade para centralizar verticalmente */
-  align-items: center; /* Adicione essa propriedade para centralizar verticalmente */
-  justify-content: center; /* Adicione essa propriedade para centralizar horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: start;
   flex-direction: column;
+  overflow: auto;
+
+    /* Estilização da barra de rolagem */
+  &::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #070709; /* Cor do fundo da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #E8005080; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Raio do canto da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
+  }
 `;
 
 
@@ -265,3 +284,6 @@ export const btnExcluirComentario = styled.button`
   }
   transition: all 0.3s ease;
 `;
+
+
+//SCROLLBAR
