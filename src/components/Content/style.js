@@ -122,10 +122,16 @@ export const ContentContainerComentarios = styled.div`
   height: 18rem;
   border-radius: 8px !important;
   margin-top: 100px;
-  background-color: #26272B;
+  //background-color: #26272B;
   padding: 0 1rem;
 
 
+`;
+
+export const perfilUser = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const formComentarios = styled.form`
@@ -211,6 +217,16 @@ export const labelEmail = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 0.8rem;
+`;
+
+export const labelEmailPerfil = styled.div`
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 1rem;
 `;
 
 export const InforUser = styled.div`

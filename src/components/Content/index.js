@@ -2,18 +2,21 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
 import * as C from "./style";
+import {settingsEmAlta, settingsComentarios} from "./carroussel";
 import "./slider.css";
 import { MdSend } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
 import { auth, db } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import firebase from "firebase/app";
+
 const Content = () => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [user] = useAuthState(auth);
+  const userName = user.displayName; //este
 
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
@@ -70,35 +73,11 @@ const Content = () => {
     fetchComments();
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2.3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
-
   return (
     <C.Container>
       <C.ContentContainer>
         <h1>Em Alta</h1>
-        <Slider {...settings}>
+        <Slider {...settingsEmAlta}>
           <C.CardContainer>
             <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
             <C.CardTitle>Título do Episódio 1</C.CardTitle>
@@ -152,16 +131,19 @@ const Content = () => {
           <C.btnEnviarComentario type="submit">Enviar <MdSend /></C.btnEnviarComentario>
         </C.formComentarios>
 
-        <Slider {...settings}>
+        <Slider {...settingsComentarios}>
           {comments.map((comment) => (
             <C.boxComentario key={comment.id}>
               <C.ContentComentario>
                 <C.InforUser>
-                  {user?.photoURL ? (
-                    <C.divUsuario><C.imgUser src={user.photoURL} alt="User" /></C.divUsuario>
-                  ) : (<span>Usuário</span>)}
+                  <C.perfilUser>
+                    {user?.photoURL ? (
+                      <C.divUsuario><C.imgUser src={user.photoURL} alt="User" /></C.divUsuario>
+                    ) : (<span>Usuário</span>)}
 
-                  <C.labelEmail><span>{user?.email}</span></C.labelEmail>
+                    <C.labelEmailPerfil><span>{userName}</span></C.labelEmailPerfil>
+                  </C.perfilUser>
+
                   <C.btnExcluirComentario onClick={() => deleteComment(comment.id)}><CgTrash /></C.btnExcluirComentario>
                 </C.InforUser>
 
@@ -171,6 +153,8 @@ const Content = () => {
           ))}
         </Slider>
       </C.ContentContainerComentarios>
+
+
     </C.Container>
   );
 };
