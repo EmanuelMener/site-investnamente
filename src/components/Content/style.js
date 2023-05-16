@@ -9,8 +9,9 @@ export const Container = styled.div`
   position: relative;
   z-index: 1;
   display: flex; /* Adicione essa propriedade para centralizar verticalmente */
-  align-items: start; /* Adicione essa propriedade para centralizar verticalmente */
+  align-items: center; /* Adicione essa propriedade para centralizar verticalmente */
   justify-content: center; /* Adicione essa propriedade para centralizar horizontalmente */
+  flex-direction: column;
 `;
 
 
@@ -19,7 +20,6 @@ export const ContainerIMG = styled.div`
   max-width: 55rem;
   height: 25rem;
   border-radius: 8px;
-  padding-top: 100px;
 `;
 
 export const CarouselImage = styled.img`
@@ -29,7 +29,6 @@ export const CarouselImage = styled.img`
   object-fit: cover;
   border-radius: 8px;
 `;
-
 
 //card google podcast
 
@@ -96,4 +95,173 @@ export const CustomDot = styled.li`
   cursor: pointer;
 `;
 
-// Restante do seu código de estilos
+// Comentários
+
+export const ContentContainerComentarios = styled.div`
+  width: 80%;
+  max-width: 55rem;
+  height: 18rem;
+  border-radius: 8px !important;
+  margin-top: 100px;
+  background-color: #26272B;
+  padding: 0 1rem;
+
+
+`;
+
+export const formComentarios = styled.form`
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border-radius: 8px;
+  margin-top: 1rem;
+`;
+
+export const inputComentario = styled.input`
+  width: 82%;
+  height: 100%;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  color: #f4f4f5;
+  border-bottom: 1px solid #f4f4f550;
+  padding: 1rem;
+  background-color: transparent;
+
+  &:focus{
+    border-bottom: 1.5px solid #0080BF;
+  }
+`;
+
+export const btnEnviarComentario = styled.button`
+  width: 15%;
+  height: 100%;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0080BF;
+  color: #F4F4F580;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 1px solid #0080BF;
+
+  padding: 1rem 1.5rem;
+
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #0080BF;
+    color: #F4F4F5;
+  }
+  transition: all 0.3s ease;
+`;
+
+export const boxComentario = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color:#f4f4f5;
+  border: 3px solid #26272B;
+  border-radius: 8px;
+  width: 20rem;
+  height: 8rem;
+  color: black;
+  margin-top: 2rem;
+  
+`;
+
+export const ContentComentario = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+`;
+
+export const labelEmail = styled.div`
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+`;
+
+export const InforUser = styled.div`
+  width: 100%;
+  height: auto;
+  //background-color: red;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+`;
+
+export const divUsuario = styled.div`
+  display: flex;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #26272B;
+`;
+
+export const imgUser = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+export const contentText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: 2.8em;
+  position: relative;
+  cursor: pointer;
+
+  &:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    z-index: 9999;
+    white-space: normal;
+  }
+`;
+
+export const btnExcluirComentario = styled.button`
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0080BF22;
+  color: #26272B50;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #26272B50;
+  padding: 0.2rem;
+
+  &:hover {
+    background-color: red;
+    color: #F4F4F5;
+  }
+  transition: all 0.3s ease;
+`;
