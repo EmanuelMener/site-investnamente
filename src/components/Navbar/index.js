@@ -17,6 +17,7 @@ const Navbar = () => {
   const [popupOpenInformacao, setPopupOpen2] = useState(false);
   const [popupOpenUpload, setPopupOpen3] = useState(false);
   const [exibirExcluirConta, setExibirExcluirConta] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const popupRef = useRef(null);
 
@@ -39,6 +40,23 @@ const Navbar = () => {
   const lidarCliqueExcluirConta = () => {
     setExibirExcluirConta(!exibirExcluirConta);
   };
+
+  const lidarCliqueExcluirContaDefinitivamente = async () => {
+    // Excluir a conta do usuário na coleção "comments"
+    const commentsSnapshot = await db.collection("comments").where("userId", "==", user.uid).get();
+    const batch = db.batch();
+    commentsSnapshot.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+
+    // Excluir a conta do usuário na coleção "users"
+    await db.collection("users").doc(user.uid).delete();
+
+    // Excluir a conta do usuário do Firebase Authentication
+    await user.delete();
+  };
+  
 
   const lidarCliqueForaDoPopup = (event) => {
     if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -188,7 +206,7 @@ const Navbar = () => {
                       </C.TextorNotUnscribe>
                       <C.botoesDoCancelamento>
                         <C.PrimaryButton>Voltar</C.PrimaryButton>
-                        <C.SecondaryButton>Cancelar inscrição</C.SecondaryButton>
+                        <C.SecondaryButton onClick={lidarCliqueExcluirContaDefinitivamente}>Cancelar inscrição</C.SecondaryButton>
                       </C.botoesDoCancelamento>
 
                     </C.campoDeMinagem>
