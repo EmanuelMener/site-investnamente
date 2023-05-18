@@ -5,6 +5,9 @@ import { MdExitToApp } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
+
+
+
 // Importações do db
 import * as EmailValidator from "email-validator";
 import { auth, db } from "../../services/firebase";

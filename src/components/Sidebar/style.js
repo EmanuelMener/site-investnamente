@@ -1,15 +1,25 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  --sidebar-width: 20rem; /* Variável para armazenar a largura do Sidebar */
+
   position: fixed;
   display: flex;
   flex-direction: column;
-  top: 80px; /* Posição em relação à navbar */
-  width: 20rem;
-  height: 100vh; /* Altura ajustada para excluir a navbar e a footer */
-  background-color: #070709; /* Cor de fundo da sidebar */
+  top: 80px;
+  width: var(--sidebar-width); /* Use a variável para definir a largura */
+  height: 100vh;
+  background-color: #070709;
   border-right: 1px solid #303135;
-  z-index: 2; /* Defina um valor maior que o z-index do carrossel */
+  z-index: 2;
+  transition: all 0.3s ease;
+  &.fechado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //justify-content: center;
+    transition: all 0.3s ease;
+  }
 `;
 
 export const menuHome = styled.div`
@@ -18,13 +28,23 @@ export const menuHome = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 65px;
+  height: 4rem;
   margin-left: 0;
   margin-top: 30px;
   background-color: #303135;
   border-radius: 0 8px 8px 0;
   font-size: 1.3rem;
   color: #F4F4F5;
+  transition: all 0.3s ease;
+  &.fechado{
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
 `;
 
 export const Div = styled.div`
@@ -33,10 +53,26 @@ export const Div = styled.div`
   height: 100%;
   background-color: #E80050;
   left: 0;
+  transition: all 0.3s ease;
+  &.fechado{
+      position: absolute;
+      width: 20px;
+      height: 5px;
+      bottom: 2px;
+      left: auto;
+      right: auto;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+  }
 `;
 
 export const Span = styled.span`
     width: 10px;
+    transition: all 0.3s ease;
+    &.fechado{
+      background-color: red;
+      transition: all 0.3s ease;
+  }
 `;
 
 export const LinhaDivSection = styled.div`
@@ -46,8 +82,8 @@ export const LinhaDivSection = styled.div`
     justify-content: center;
     width: 100%;
     height: 20px;
-    top: 5rem;
-
+    top: 2rem;
+    transition: all 0.3s ease;
 `;
 
 export const LinhaDivSectionDentro = styled.div`
@@ -59,6 +95,7 @@ export const LinhaDivSectionDentro = styled.div`
     height: 1px;
     top: 5rem;
     background-color: #303135;
+    transition: all 0.3s ease;
 `;
 
 export const textDivSectionDentro = styled.div`
@@ -73,6 +110,7 @@ export const textDivSectionDentro = styled.div`
     color: #757575;
     border-radius: 2rem;
     top: 4.4rem;
+    transition: all 0.3s ease;
 `;
 
 export const menuMinhaLivraria = styled.div`
@@ -83,7 +121,7 @@ export const menuMinhaLivraria = styled.div`
   width: 90%;
   height: 65px;
   margin-left: 0;
-  margin-top: 11rem;
+  margin-top: 8rem;
   background-color: transparent;
   border-radius: 0 8px 8px 0;
   font-size: 1.3rem;
@@ -94,6 +132,13 @@ export const menuMinhaLivraria = styled.div`
       color: #F4F4F5;
     }
   transition: all 0.3s ease;
+
+  &.fechado{
+    width: 100%;
+    border-radius: 8px;
+    margin-left: center;
+    transition: all 0.3s ease;
+  }
 `;
 
 export const menuMinhaLivrariaDiv = styled.div`
@@ -102,9 +147,59 @@ export const menuMinhaLivrariaDiv = styled.div`
   height: 100%;
   background-color: transparent;
   left: 0;
+  transition: all 0.3s ease;
+
+  &.fechado{
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: auto;
+    transition: all 0.3s ease;
+  }
 `;
 
 export const menuMinhaLivrariaSpan = styled.span`
     width: 10px;
+    transition: all 0.3s ease;
 `;
 
+
+export const iconsGeral = styled.div`
+    height: 100%;
+    width: 3.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: #e80050;
+    border: none;
+    border-radius: 8px;
+    margin-top: 1rem;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    &.fechado {
+    font-size: 20px;
+    height: 4rem;
+  }
+
+`;
+
+export const btnColtrollSidebar = styled.button`
+  position: relative;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+  height: 4rem;
+  margin-right: 0;
+  margin-top: 0;
+  border:none;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  &.fechado {
+    font-size: 10px;
+    transition: all 0.3s ease;
+  }
+`;

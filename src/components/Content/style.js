@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: calc(100vw - 20rem);
+  width: 100%;
   height: 100vh; /* Subtrai a altura do Navbar do total da altura da viewport */
-  margin-left: 20rem;
+  margin-left: 4.5rem;
   background-color: #070709;
   color: white;
   position: fixed;

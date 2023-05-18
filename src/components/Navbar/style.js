@@ -519,3 +519,4 @@ export const TextorNotUnscribe = styled.div`
   padding: 1rem 0;
   //background-color: red;
 `;
+
