@@ -119,7 +119,7 @@ export const menuMinhaLivraria = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 65px;
+  height: 4rem;
   margin-left: 0;
   margin-top: 8rem;
   background-color: transparent;
@@ -134,10 +134,15 @@ export const menuMinhaLivraria = styled.div`
   transition: all 0.3s ease;
 
   &.fechado{
-    width: 100%;
+    position: relative;
     border-radius: 8px;
     margin-left: center;
     transition: all 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
