@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin-left: 20rem;
   background-color: #070709;
   color: white;
-  position: relative;
+  position: fixed;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -125,7 +125,7 @@ export const ContentContainerComentarios = styled.div`
   //background-color: #26272B;
   padding: 0 1rem;
 
-
+  //position:relative;
 `;
 
 export const perfilUser = styled.div`
@@ -191,16 +191,17 @@ export const boxComentario = styled.div`
   align-items: center;
   flex-direction: column;
   background-color:#f4f4f5;
-  border: 3px solid #26272B;
+  border: 3px solid #070709;
   border-radius: 8px;
   width: 20rem;
-  height: 8rem;
+  height: 10rem;
   color: black;
   margin-top: 2rem;
   
 `;
 
 export const ContentComentario = styled.div`
+  //position: relative;
   display: flex;
   width: 100%;
   height: 100%;
@@ -254,6 +255,19 @@ export const imgUser = styled.img`
   height: 100%;
 `;
 
+export const contornoDoBoxMessagem = styled.div`
+  //background-color:blue;
+  width: 100%;
+  height:100%;
+  padding: 0.5rem 0;
+  //position:relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+`;
+
 export const contentText = styled.div`
   display: flex;
   align-items: center;
@@ -264,22 +278,13 @@ export const contentText = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   max-height: 2.8em;
-  position: relative;
+  //position: relative;
   cursor: pointer;
 
-  &:hover::after {
-    content: attr(data-text);
-    position: absolute;
-    top: -20px;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 5px;
-    border-radius: 4px;
-    z-index: 9999;
-    white-space: normal;
-  }
+  //background-color:red;
+
 `;
+
 
 export const btnExcluirComentario = styled.button`
   outline: none;
@@ -318,3 +323,24 @@ export const spaceHeightFooter = styled.div`
   margin-bottom: 12rem;
   padding: 0 1rem;
 `;
+
+
+
+export const btnVerMais = styled.button`
+  background-color: #3F3F3F30;
+  color: #333;
+  border: none;
+  border-radius:1rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
+//Mais mensagens
+
+export const PopupContainerMaisComentario = styled.div`
+
+`;
+
+
+
