@@ -5,7 +5,7 @@ export const Container = styled.div`
     display:flex;
     bottom: 0;
     width: 100vw;
-    height: 120px;
+    height: 7rem;
     border-top: 1px solid #B5B5B5;
     background-color: rgba(88,88,92, 0.6);
     backdrop-filter: blur(10px);

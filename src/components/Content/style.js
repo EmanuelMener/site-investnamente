@@ -303,3 +303,18 @@ export const btnExcluirComentario = styled.button`
 
 
 //SCROLLBAR
+
+
+
+//space Height Footer
+
+export const spaceHeightFooter = styled.div`
+  width: 80%;
+  max-width: 55rem;
+  height: 300px !important;
+  border-radius: 8px !important;
+  margin-top: 100px;
+  background-color: #26272B;
+  margin-bottom: 12rem;
+  padding: 0 1rem;
+`;

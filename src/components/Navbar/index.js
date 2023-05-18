@@ -11,6 +11,7 @@ import { auth, db } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 
+
 const Navbar = () => {
   const [user] = useAuthState(auth);
   const [popupOpenPerfil, setPopupOpen] = useState(false);
