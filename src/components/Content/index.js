@@ -29,6 +29,10 @@ const Content = () => {
 
   const [popupOpenMaisComentario, setPopupOpenMaisComentario] = useState(false);
 
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
+  const [commentToDelete, setCommentToDelete] = useState(null);
+
+
   const handleToggleShowFullComment = () => {
     setShowFullComment(!showFullComment);
   };
@@ -153,8 +157,8 @@ const Content = () => {
 
         <Slider {...settingsComentarios}>
           {commentsSnapshot?.docs.map((doc) => {
-            const comment = doc.data();
-            const isCurrentUserComment = comment.userId === user.uid; // Verifica se o comentário pertence ao usuário atualmente autenticado
+          const comment = doc.data();
+          const isCurrentUserComment = comment.userId === user.uid;
 
             return (
               <C.boxComentario key={doc.id}>
@@ -168,15 +172,16 @@ const Content = () => {
                       ) : (
                         <span>Usuário</span>
                       )}
-
                       <C.labelEmailPerfil>
                         <span>{comment.userName}</span>
                       </C.labelEmailPerfil>
                     </C.perfilUser>
-
                     {isCurrentUserComment && (
                       <C.btnExcluirComentario
-                        onClick={() => deleteComment(doc.id)}
+                        onClick={() => {
+                          setCommentToDelete(doc.id);
+                          setShowConfirmationDialog(true);
+                        }}
                       >
                         <CgTrash />
                       </C.btnExcluirComentario>
@@ -196,7 +201,6 @@ const Content = () => {
                         ? comment.text.slice(0, 60) + "..."
                         : comment.text}
                     </C.contentText>
-
                     {comment.text.length > 70 && !showFullComment && (
                       <>
                         <C.btnVerMais
@@ -208,19 +212,45 @@ const Content = () => {
                           {expandedComments.includes(doc.id) ? "Ver menos" : "Ver mais"}
                         </C.btnVerMais>
                         {expandedComments.includes(doc.id) && (
-                          <C.PopupContainerMaisComentario open={popupOpenMaisComentario} />
+                          <C.PopupContainerMaisComentario
+                            open={popupOpenMaisComentario}
+                          />
                         )}
                       </>
                     )}
-
                   </C.contornoDoBoxMessagem>
-
                 </C.ContentComentario>
               </C.boxComentario>
             );
           })}
         </Slider>
+          {showConfirmationDialog && (
+              <C.ConfirmationDialog>
+                <C.ConfirmationMessage>
+                  Deseja realmente excluir o comentário?
 
+                  <C.ConfirmationButtons>
+                  <C.ConfirmationButtonRed
+                    onClick={() => {
+                      deleteComment(commentToDelete);
+                      setShowConfirmationDialog(false);
+                    }}
+                  >
+                    Sim
+                  </C.ConfirmationButtonRed>
+                  <C.ConfirmationButton
+                    onClick={() => {
+                      setShowConfirmationDialog(false);
+                    }}
+                  >
+                    Não
+                  </C.ConfirmationButton>
+                </C.ConfirmationButtons>
+
+                </C.ConfirmationMessage>
+
+              </C.ConfirmationDialog>
+            )}
 
 
       </C.ContentContainerComentarios>

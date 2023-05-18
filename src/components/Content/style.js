@@ -344,3 +344,72 @@ export const PopupContainerMaisComentario = styled.div`
 
 
 
+
+
+//Confirmação da Exclusão
+
+export const ConfirmationDialog = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+`;
+
+export const ConfirmationMessage = styled.div`
+  background-color: #17181A;
+  padding: 20px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 50rem;
+  height: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction:column;
+`;
+
+export const ConfirmationButtons = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const ConfirmationButton = styled.button`
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0c7cd5;
+  }
+`;
+
+export const ConfirmationButtonRed = styled.button`
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  color: #f4f4f5;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: red;
+  }
+`;
