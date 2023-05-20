@@ -165,6 +165,7 @@ const Content = () => {
           {commentsSnapshot?.docs.map((doc) => {
           const comment = doc.data();
           const isCurrentUserComment = comment.userId === user.uid;
+          const commentDate = comment.timestamp?.toDate();
 
             return (
               <C.boxComentario key={doc.id}>
@@ -181,6 +182,7 @@ const Content = () => {
                       <C.labelEmailPerfil>
                         <span>{comment.userName}</span>
                       </C.labelEmailPerfil>
+                      <C.CommentTimestamp>{commentDate?.toLocaleString()}</C.CommentTimestamp>
                     </C.perfilUser>
                     {isCurrentUserComment && (
                       <C.btnExcluirComentario onClick={() => { setCommentToDelete(doc.id); setShowConfirmationDialog(true) }} >
@@ -252,25 +254,41 @@ const Content = () => {
 
                   <C.telaMaisMensagens>                   
 
-                  {commentsMaisMensagens.map((comment) => (
-                    <C.boxMensagensMaisMensagens key={comment.id}>
-                      <C.UsuarioMaisMensagens>
-                        <C.perfilUser>
-                        {comment.userPhotoURL ? (
-                          <C.divUsuarioMaisMensagens>
-                            <C.imgUser src={comment.userPhotoURL} alt="User" />
-                          </C.divUsuarioMaisMensagens>
-                        ) : (
-                          <span>Usuário</span>
-                        )}
-                        <C.labelEmailPerfil>
-                          <span>{comment.userName}</span>
-                        </C.labelEmailPerfil>
-                      </C.perfilUser>                        
-                      </C.UsuarioMaisMensagens>
-                      {comment.text}
-                    </C.boxMensagensMaisMensagens>
-                  ))}
+                  {commentsMaisMensagens.slice().reverse().map((comment) => {
+                    const commentDate = comment.timestamp?.toDate();
+                    const isCurrentUserComment = comment.userId === user.uid;
+
+                    return (
+                      <C.boxMensagensMaisMensagens key={comment.id}>
+                        <C.UsuarioMaisMensagens>
+                          <C.perfilUser>
+                            {comment.userPhotoURL ? (
+                              <C.divUsuarioMaisMensagens>
+                                <C.imgUser src={comment.userPhotoURL} alt="User" />
+                              </C.divUsuarioMaisMensagens>
+                            ) : (
+                              <span>Usuário</span>
+                            )}
+                            <C.labelEmailPerfil>
+                              <span>{comment.userName}</span>
+                            </C.labelEmailPerfil>
+                            <C.CommentTimestamp>{commentDate?.toLocaleString()}</C.CommentTimestamp>
+                            {isCurrentUserComment && (
+                              <C.btnExcluirComentarioMaisMensagens onClick={() => { setCommentToDelete(comment.id); setShowConfirmationDialog(true) }} >
+                                <CgTrash />
+                              </C.btnExcluirComentarioMaisMensagens>
+                            )}
+                          </C.perfilUser>                        
+                        </C.UsuarioMaisMensagens>
+                        {comment.text}
+                      </C.boxMensagensMaisMensagens>
+                    );
+                  })}
+
+
+
+
+
 
 
                   </C.telaMaisMensagens>

@@ -306,6 +306,39 @@ export const btnExcluirComentario = styled.button`
   transition: all 0.3s ease;
 `;
 
+export const CommentTimestamp = styled.div`
+  width: auto;
+  height: 1rem;
+  background-color: #c4c4c450;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-radius: 8px;
+  margin-left: 1rem;
+`;
+
+export const btnExcluirComentarioMaisMensagens = styled.button`
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #C4C4C450;
+  color: #26272B;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #26272B50;
+  padding: 0.1rem;
+  margin-left: 1rem;
+
+  &:hover {
+    background-color: red;
+    color: #F4F4F5;
+  }
+  transition: all 0.3s ease;
+`;
 
 //SCROLLBAR
 
@@ -478,7 +511,9 @@ export const boxMensagensMaisMensagens = styled.div`
   padding: 1rem;
   transition: all 0.3s ease;
   //border: 1px solid #f4f4f520;
+  word-wrap: break-word;
 `;
+
 
 export const UsuarioMaisMensagens = styled.div`
   width: 100%;
