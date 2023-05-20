@@ -339,12 +339,166 @@ export const btnVerMais = styled.button`
 //Mais mensagens
 
 export const PopupContainerMaisComentario = styled.div`
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  transition: all 0.3s ease;
 `;
 
 
+export const corpoMaisMensagens = styled.div`
+  width: 60rem;
+  height: 70%;
+  background-color: #26272B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 8px;
 
+  transition: all 0.3s ease;
+`;
 
+export const cabecaMaisMensagens = styled.div`
+  width: 100%;
+  height: 3rem;
+  border-radius: 8px;
+  //border: 1px solid #f4f4f520;
+  background-color: transparent;
+  padding: 0.3rem;
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const formComentariosMaisMensagens = styled.form`
+  margin-top:0;
+  height: 2rem;
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #26272B;
+  border-radius: 8px;
+`;
+
+export const inputComentarioMaisMensagens = styled.input`
+  width: 70%;
+  height: 100%;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  color: #f4f4f5;
+  border-bottom: 1px solid #f4f4f550;
+  padding: 1rem;
+  background-color: transparent;
+
+  &:focus{
+    border-bottom: 1.5px solid #0080BF;
+  }
+`;
+
+export const btnEnviarComentarioMaisMensagens = styled.button`
+  width: 20%;
+  height: 100%;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0080BF;
+  color: #F4F4F580;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 1px solid #0080BF;
+
+  padding: 1rem 1.5rem;
+
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #0080BF;
+    color: #F4F4F5;
+  }
+  transition: all 0.3s ease;
+`;
+
+export const telaMaisMensagens = styled.div`
+  position: relative;
+  width: 100%;
+  height: 90%;
+  border: 1px solid #f4f4f520;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  overflow: auto;
+  transition: all 0.3s ease;
+  &::-webkit-scrollbar {
+    width: 0.5rem; /* Largura da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #07070950; /* Cor do fundo da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #E8005060; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Raio do canto da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
+  }
+`;
+
+export const btnFecharMaisMensagens = styled.button`
+  width:4rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease;
+`;
+
+export const boxMensagensMaisMensagens = styled.div`
+  width: 100%;
+  height: auto;
+  //background-color: blue;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  //border: 1px solid #f4f4f520;
+`;
+
+export const UsuarioMaisMensagens = styled.div`
+  width: 100%;
+  height: 2rem;
+  //background-color: red;
+  display:flex;
+  align-items: center;
+  justify-content: start;
+  transition: all 0.3s ease;
+`;
+
+export const divUsuarioMaisMensagens = styled.div`
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #26272B;
+  transition: all 0.3s ease;
+`;
 
 //Confirmação da Exclusão
 
@@ -359,6 +513,7 @@ export const ConfirmationDialog = styled.div`
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
+  transition: all 0.3s ease;
 `;
 
 export const ConfirmationMessage = styled.div`
@@ -369,17 +524,20 @@ export const ConfirmationMessage = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   max-width: 50rem;
   height: 10rem;
+  transition: all 0.3s ease;
 
   display: flex;
   align-items: center;
   justify-content:center;
   flex-direction:column;
+  transition: all 0.3s ease;
 `;
 
 export const ConfirmationButtons = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  transition: all 0.3s ease;
 `;
 
 export const ConfirmationButton = styled.button`
@@ -398,6 +556,7 @@ export const ConfirmationButton = styled.button`
   }
 `;
 
+
 export const ConfirmationButtonRed = styled.button`
   margin: 0 10px;
   padding: 10px 20px;
@@ -413,3 +572,5 @@ export const ConfirmationButtonRed = styled.button`
     background-color: red;
   }
 `;
+
+

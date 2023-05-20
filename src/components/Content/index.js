@@ -27,9 +27,12 @@ const Content = () => {
   const [expandedComments, setExpandedComments] = useState([]);
   const commentLines = 2;
 
-  const [popupOpenMaisComentario, setPopupOpenMaisComentario] = useState(false);
+  const [popupOpenMaisComentario, setPopupOpenMaisComentario] = useState(false); //
+  const [commentsMaisMensagens, setCommentsMaisMensagens] = useState([]);// estado tela mais mensagens
 
-  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
+
+
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false); //Excluir Comentário
   const [commentToDelete, setCommentToDelete] = useState(null);
 
 
@@ -84,15 +87,18 @@ const Content = () => {
   };
 
   useEffect(() => {
-    if (commentsSnapshot) {
-      const fetchedComments = commentsSnapshot.docs.map((doc) => ({
+    const unsubscribe = db.collection("comments").onSnapshot((snapshot) => {
+      const updatedComments = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-
-      setComments(fetchedComments);
-    }
-  }, [commentsSnapshot]);
+      setCommentsMaisMensagens(updatedComments);
+    });
+  
+    // Retorne uma função de limpeza para cancelar a inscrição quando o componente for desmontado
+    return () => unsubscribe();
+  }, []);
+  
   
 //BtnUpload
 
@@ -177,12 +183,7 @@ const Content = () => {
                       </C.labelEmailPerfil>
                     </C.perfilUser>
                     {isCurrentUserComment && (
-                      <C.btnExcluirComentario
-                        onClick={() => {
-                          setCommentToDelete(doc.id);
-                          setShowConfirmationDialog(true);
-                        }}
-                      >
+                      <C.btnExcluirComentario onClick={() => { setCommentToDelete(doc.id); setShowConfirmationDialog(true) }} >
                         <CgTrash />
                       </C.btnExcluirComentario>
                     )}
@@ -209,13 +210,9 @@ const Content = () => {
                             setPopupOpenMaisComentario(!popupOpenMaisComentario);
                           }}
                         >
-                          {expandedComments.includes(doc.id) ? "Ver menos" : "Ver mais"}
+                          {expandedComments.includes(doc.id) ? "Ver mais" : "Ver mais"}
                         </C.btnVerMais>
-                        {expandedComments.includes(doc.id) && (
-                          <C.PopupContainerMaisComentario
-                            open={popupOpenMaisComentario}
-                          />
-                        )}
+
                       </>
                     )}
                   </C.contornoDoBoxMessagem>
@@ -229,28 +226,61 @@ const Content = () => {
                 <C.ConfirmationMessage>
                   Deseja realmente excluir o comentário?
 
-                  <C.ConfirmationButtons>
-                  <C.ConfirmationButtonRed
-                    onClick={() => {
-                      deleteComment(commentToDelete);
-                      setShowConfirmationDialog(false);
-                    }}
-                  >
-                    Sim
-                  </C.ConfirmationButtonRed>
-                  <C.ConfirmationButton
-                    onClick={() => {
-                      setShowConfirmationDialog(false);
-                    }}
-                  >
-                    Não
-                  </C.ConfirmationButton>
+                <C.ConfirmationButtons>
+                  <C.ConfirmationButtonRed onClick={() => {deleteComment(commentToDelete); setShowConfirmationDialog(false);}} > Sim</C.ConfirmationButtonRed>
+                  <C.ConfirmationButton onClick={() => {setShowConfirmationDialog(false);}}>Não</C.ConfirmationButton>
                 </C.ConfirmationButtons>
 
                 </C.ConfirmationMessage>
 
               </C.ConfirmationDialog>
-            )}
+            )};
+
+            {popupOpenMaisComentario && (
+              <C.PopupContainerMaisComentario>
+                <C.corpoMaisMensagens>
+                  <C.cabecaMaisMensagens>
+                    <C.formComentariosMaisMensagens onSubmit={handleSubmitComment}>
+                        <C.inputComentarioMaisMensagens type="text" value={newComment} onChange={handleCommentChange} placeholder="Digite seu comentário..." />
+                        <C.btnEnviarComentarioMaisMensagens type="submit">Enviar <MdSend /></C.btnEnviarComentarioMaisMensagens>
+                    </C.formComentariosMaisMensagens> 
+
+                    <C.btnFecharMaisMensagens onClick={() => setPopupOpenMaisComentario(false)}>
+                      X
+                    </C.btnFecharMaisMensagens>
+                  </C.cabecaMaisMensagens>
+
+                  <C.telaMaisMensagens>                   
+
+                  {commentsMaisMensagens.map((comment) => (
+                    <C.boxMensagensMaisMensagens key={comment.id}>
+                      <C.UsuarioMaisMensagens>
+                        <C.perfilUser>
+                        {comment.userPhotoURL ? (
+                          <C.divUsuarioMaisMensagens>
+                            <C.imgUser src={comment.userPhotoURL} alt="User" />
+                          </C.divUsuarioMaisMensagens>
+                        ) : (
+                          <span>Usuário</span>
+                        )}
+                        <C.labelEmailPerfil>
+                          <span>{comment.userName}</span>
+                        </C.labelEmailPerfil>
+                      </C.perfilUser>                        
+                      </C.UsuarioMaisMensagens>
+                      {comment.text}
+                    </C.boxMensagensMaisMensagens>
+                  ))}
+
+
+                  </C.telaMaisMensagens>
+
+                </C.corpoMaisMensagens>
+
+              </C.PopupContainerMaisComentario>
+    
+            )};
+
 
 
       </C.ContentContainerComentarios>

@@ -11,6 +11,7 @@ export const Container = styled.div`
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(0px);
     z-index: 2; /* Defina um valor maior que o z-index do carrossel */
+    transition: all 0.3s ease;
     
 `;
 
@@ -110,18 +111,31 @@ export const InfoDaDireita = styled.div`
 
 
 export const bntPlay2 = styled.div`
-    position: absolute;
-    display: flex; //${props => (props.open ? "flex" : "none")};
-    align-items: center;
-    justify-content: center;
-    height: 5rem;
-    width: 5rem;
-    margin-top: -2.5rem;
-    right: 15rem;
-    background-color: #E80050;
-    border: 3px solid #303135;
-    border-radius: 50%;
-    color: #F4F4F5;
-    font-size: 2.5rem;
-    transition: all 0.3s ease;
+  position: absolute;
+  display: flex; //${props => (props.open ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+  width: 5rem;
+  margin-top: -2.5rem;
+  right: 15rem;
+  background-color: #E80050;
+  border: 3px solid #303135;
+  border-radius: 50%;
+  color: #F4F4F5;
+  font-size: 2.5rem;
+  transition: all 0.3s ease;
+
+  /* Pseudoelemento para exibir a seta para baixo */
+
+  &:hover {
+    /* Estilização ao passar o mouse por cima */
+    background-color: #E80010;
+    cursor: pointer;
+  }
+
+  &:hover::after {
+    /* Altera o conteúdo para a seta para baixo ao passar o mouse por cima */
+    content: "↓";
+  }
 `;
