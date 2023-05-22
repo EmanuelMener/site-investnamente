@@ -100,7 +100,7 @@ const Navbar = () => {
         <C.bntUpload onClick={lidarCliqueUpload}>
           <AiOutlineCloudUpload />
           <C.PopupContainerUPLOAD open={popupOpenUpload}>
-            <C.FormContainer>
+            <C.FormContainer onClick={(event) => event.stopPropagation()}>
               <C.FormField>
                 <C.Label htmlFor="image">Imagem:</C.Label>
                 <C.Input type="file" id="image" accept="image/*" />

@@ -520,3 +520,35 @@ export const TextorNotUnscribe = styled.div`
   //background-color: red;
 `;
 
+
+//novoUpload
+
+export const FileInput = styled.input`
+  margin-bottom: 10px;
+`;
+
+export const Progress = styled.progress`
+  display: block;
+  width: 60%;
+  height: 20px;
+  margin-top: 10px;
+`;
+
+export const SubmitButton = styled.button`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
+
+export const ErrorMessage = styled.div`
+  color: red;
+  margin-bottom: 10px;
+`;
