@@ -4,6 +4,8 @@ import { BiSearchAlt2, BiConversation, BiHelpCircle, BiNotification, BiUpload } 
 import { MdExitToApp } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { uploadFiles } from './uploadService';
+
 
 
 
@@ -22,6 +24,9 @@ const Navbar = () => {
   const [popupOpenUpload, setPopupOpen3] = useState(false);
   const [exibirExcluirConta, setExibirExcluirConta] = useState(false);
   const [users, setUsers] = useState([]);
+
+  const titleRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   const popupRef = useRef(null);
 
@@ -68,9 +73,23 @@ const Navbar = () => {
     }
   };
 
-  const handleUpload = () => {
-    // Lógica para enviar o arquivo
+  const handleUpload = (e) => {
+    e.preventDefault();
+  
+    const imageFile = document.querySelector('#image').files[0];
+    const videoFile = document.querySelector('#video').files[0];
+    const audioFile = document.querySelector('#audio').files[0];
+    const title = titleRef.current.value; // Usando a referência para o input do título
+    const description = descriptionRef.current.value; // Usando a referência para o input da descrição
+  
+    if (imageFile && videoFile && audioFile && title && description) {
+      uploadFiles(imageFile, videoFile, audioFile, title, description);
+    } else {
+      console.error('Por favor, preencha todos os campos');
+    }
   };
+  
+  
 
   return (
     <C.Container>
@@ -115,11 +134,11 @@ const Navbar = () => {
               </C.FormField>
               <C.FormField>
                 <C.Label htmlFor="title">Título:</C.Label>
-                <C.Input type="text" id="title" />
+                <C.Input type="text" id="title" ref={titleRef} />
               </C.FormField>
               <C.FormField>
                 <C.Label htmlFor="description">Descrição:</C.Label>
-                <C.Textarea id="description" />
+                <C.Textarea id="description" ref={descriptionRef} />
               </C.FormField>
               <C.Button onClick={handleUpload}>
                 Enviar
