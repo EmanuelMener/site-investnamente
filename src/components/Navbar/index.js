@@ -77,13 +77,13 @@ const Navbar = () => {
     e.preventDefault();
   
     const imageFile = document.querySelector('#image').files[0];
-    const videoFile = document.querySelector('#video').files[0];
+    //const videoFile = document.querySelector('#video').files[0];
     const audioFile = document.querySelector('#audio').files[0];
     const title = titleRef.current.value; // Usando a referência para o input do título
     const description = descriptionRef.current.value; // Usando a referência para o input da descrição
   
-    if (imageFile && videoFile && audioFile && title && description) {
-      uploadFiles(imageFile, videoFile, audioFile, title, description);
+    if (imageFile && /*videoFile &&*/ audioFile && title && description) {
+      uploadFiles(imageFile, /*videoURL,*/ audioFile, title, description);
     } else {
       console.error('Por favor, preencha todos os campos');
     }
@@ -124,10 +124,10 @@ const Navbar = () => {
                 <C.Label htmlFor="image">Imagem:</C.Label>
                 <C.Input type="file" id="image" accept="image/*" />
               </C.FormField>
-              <C.FormField>
+              {/*<C.FormField>
                 <C.Label htmlFor="video">Vídeo:</C.Label>
                 <C.Input type="file" id="video" accept="video/*" />
-              </C.FormField>
+              </C.FormField>*/}
               <C.FormField>
                 <C.Label htmlFor="audio">Áudio:</C.Label>
                 <C.Input type="file" id="audio" accept="audio/*" />

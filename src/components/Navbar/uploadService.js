@@ -16,14 +16,14 @@ firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 const firestore = firebase.firestore();
 
-export const uploadFiles = (imageFile, videoFile, audioFile, title, description) => {
+export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, description) => {
     const storageRef = storage.ref();
     const imageRef = storageRef.child(`images/${imageFile.name}`);
-    const videoRef = storageRef.child(`videos/${videoFile.name}`);
+    //const videoRef = storageRef.child(`videos/${videoFile.name}`);
     const audioRef = storageRef.child(`audios/${audioFile.name}`);
   
     const imageUploadTask = imageRef.put(imageFile);
-    const videoUploadTask = videoRef.put(videoFile);
+    //const videoUploadTask = videoRef.put(videoFile);
     const audioUploadTask = audioRef.put(audioFile);
     
     // Manipular o progresso do upload aqui
@@ -33,23 +33,23 @@ export const uploadFiles = (imageFile, videoFile, audioFile, title, description)
     });
     
     // Manipular o sucesso do upload e salvar URLs no Firestore aqui
-    Promise.all([audioUploadTask, videoUploadTask, imageUploadTask])
+    Promise.all([audioUploadTask, /*videoUploadTask,*/ imageUploadTask])
       .then(() => {
         console.log('Todos os arquivos foram enviados com sucesso.');
     
         Promise.all([
           audioRef.getDownloadURL(),
-          videoRef.getDownloadURL(),
+          //videoRef.getDownloadURL(),
           imageRef.getDownloadURL()
         ])
-          .then(([audioURL, videoURL, imageURL]) => {
+          .then(([audioURL, /*videoURL*/, imageURL]) => {
             // Salvar as URLs no Firestore ou realizar as ações desejadas
-            console.log('URLs do áudio, vídeo e imagem:', audioURL, videoURL, imageURL);
+            console.log('URLs do áudio, vídeo e imagem:', audioURL, /*videoURL,*/ imageURL);
     
             // Exemplo de como salvar no Firestore
             firestore.collection('infoEp').add({
               audioURL,
-              videoURL,
+              /*videoURL,*/
               imageURL,
               titulo: title,
               descricao: description
