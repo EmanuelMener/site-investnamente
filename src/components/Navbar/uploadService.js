@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 const firestore = firebase.firestore();
 
-export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, description) => {
+export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, description, setUploadStatus, setUploadProgress) => {
     const storageRef = storage.ref();
     const imageRef = storageRef.child(`images/${imageFile.name}`);
     //const videoRef = storageRef.child(`videos/${videoFile.name}`);
@@ -30,12 +30,14 @@ export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, descript
     audioUploadTask.on('state_changed', (audioSnapshot) => {
       const audioProgress = (audioSnapshot.bytesTransferred / audioSnapshot.totalBytes) * 100;
       console.log('Progresso do upload de áudio:', audioProgress);
+      setUploadProgress(audioProgress);
     });
     
     // Manipular o sucesso do upload e salvar URLs no Firestore aqui
     Promise.all([audioUploadTask, /*videoUploadTask,*/ imageUploadTask])
       .then(() => {
         console.log('Todos os arquivos foram enviados com sucesso.');
+        setUploadProgress(0);
     
         Promise.all([
           audioRef.getDownloadURL(),
@@ -57,6 +59,8 @@ export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, descript
               .then((docRef) => {
                 const docId = docRef.id;
                 console.log('Documento salvo no Firestore com ID:', docId);
+        
+                setUploadStatus("Upload concluído com sucesso!");
               })
               .catch((error) => {
                 console.error('Erro ao salvar no Firestore:', error);

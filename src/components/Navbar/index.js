@@ -24,6 +24,10 @@ const Navbar = () => {
   const [popupOpenUpload, setPopupOpen3] = useState(false);
   const [exibirExcluirConta, setExibirExcluirConta] = useState(false);
   const [users, setUsers] = useState([]);
+  const [uploadStatus, setUploadStatus] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+
+
 
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -83,7 +87,7 @@ const Navbar = () => {
     const description = descriptionRef.current.value; // Usando a referência para o input da descrição
   
     if (imageFile && /*videoFile &&*/ audioFile && title && description) {
-      uploadFiles(imageFile, /*videoFile,*/ audioFile, title, description);
+      uploadFiles(imageFile, /*videoFile,*/ audioFile, title, description, setUploadStatus, setUploadProgress);
     } else {
       console.error('Por favor, preencha todos os campos');
     }
@@ -120,6 +124,9 @@ const Navbar = () => {
           <AiOutlineCloudUpload />
           <C.PopupContainerUPLOAD open={popupOpenUpload}>
             <C.FormContainer onClick={(event) => event.stopPropagation()}>
+              <div>
+                <progress value={uploadProgress} max="100"></progress>
+              </div>
               <C.FormField>
                 <C.Label htmlFor="image">Imagem:</C.Label>
                 <C.Input type="file" id="image" accept="image/*" />
@@ -146,6 +153,9 @@ const Navbar = () => {
                   <BiUpload/>
                 </C.bntUpload>
               </C.Button>
+
+              {uploadStatus && <span>{uploadStatus}</span>}
+
             </C.FormContainer>
           </C.PopupContainerUPLOAD>
         </C.bntUpload>
