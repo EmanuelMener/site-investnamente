@@ -13,6 +13,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import firebase from "firebase/compat/app";
+import { collection, getDocs } from "firebase/firestore"
+
+const fetchData = async (db) => {
+  const docsCol = collection(db, 'iformacoesDoEp');
+  const docSnap = await getDocs(docsCol);
+  const docList = docSnap.docs.map(doc => doc.data());
+  return docList;
+};
 
 const Content = () => {
   const [comments, setComments] = useState([]);
@@ -31,11 +39,13 @@ const Content = () => {
   const [commentsMaisMensagens, setCommentsMaisMensagens] = useState([]);// estado tela mais mensagens
 
 
-
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false); //Excluir Comentário
   const [commentToDelete, setCommentToDelete] = useState(null);
 
 
+  const [iformacoesDoEp, setInfoEp] = useState([]);
+
+  
   const handleToggleShowFullComment = () => {
     setShowFullComment(!showFullComment);
   };
@@ -99,6 +109,18 @@ const Content = () => {
     return () => unsubscribe();
   }, []);
   
+  useEffect(() => {
+    const fetchInfoEp = async () => {
+      try {
+        const data = await fetchData(db);
+        setInfoEp(data);
+      } catch (error) {
+        console.error("Erro ao buscar os dados da coleção infoEp:", error);
+      }
+    };
+
+    fetchInfoEp();
+  }, []);
   
 //BtnUpload
 
@@ -107,50 +129,15 @@ const Content = () => {
     <C.Container>
       <C.ContentContainer>
         <h1>Em Alta</h1>
+
         <Slider {...settingsEmAlta}>
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
+        {iformacoesDoEp.map((item) => (
+          <C.CardContainer key={item.id}>
+            <C.CardImage src={item.imageURL} alt="Imagem" />
+            <C.CardTitle>{item.titulo}</C.CardTitle>
+            <C.CardDescription>{item.descricao}</C.CardDescription>
           </C.CardContainer>
-
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
-          </C.CardContainer>
-
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
-          </C.CardContainer>
-
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
-          </C.CardContainer>
-
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
-          </C.CardContainer>
-
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
-          </C.CardContainer>
-
-          <C.CardContainer>
-            <C.CardImage src="img/entrevistaJenni.png" alt="Imagem 1" />
-            <C.CardTitle>Título do Episódio 1</C.CardTitle>
-            <C.CardDescription>Descrição do Episódio 1</C.CardDescription>
-          </C.CardContainer>
-
-          {/* Adicione mais cards conforme necessário */}
+        ))}
         </Slider>
       </C.ContentContainer>
 

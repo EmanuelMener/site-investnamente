@@ -49,7 +49,7 @@ export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, descript
             console.log('URLs do áudio, vídeo e imagem:', audioURL, /*videoURL,*/ imageURL);
     
             // Exemplo de como salvar no Firestore
-            firestore.collection('infoEp').add({
+            firestore.collection('iformacoesDoEp').add({
               audioURL,
               /*videoURL,*/
               imageURL,

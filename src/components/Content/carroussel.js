@@ -4,9 +4,9 @@ export const settingsEmAlta = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2.3,
+    slidesToShow: 1.8,
     slidesToScroll: 1,
-    autoplay: true,
+    //autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
       {

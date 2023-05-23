@@ -54,7 +54,7 @@ export const CarouselImage = styled.img`
 export const ContentContainer = styled.div`
   width: 80%;
   max-width: 55rem;
-  height: 14.3rem;
+  height: 30rem;
   border-radius: 8px !important;
   margin-top: 100px;
   background-color: #26272B;
@@ -67,6 +67,7 @@ export const CardContainer = styled.div`
   justify-content: center !important;
   align-items: center !important;
   width: 30%; /* Ajuste a largura conforme necessário */
+  height: 20rem;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -76,8 +77,9 @@ export const CardContainer = styled.div`
 `;
 
 export const CardImage = styled.img`
-  max-width: 3rem; /* Ajuste a largura da imagem conforme necessário */
-  height: auto;
+
+  width: 100%;
+  height: 10rem;
   border-radius: 8px;
   margin-bottom: 16px;
 `;
