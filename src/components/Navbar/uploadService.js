@@ -42,7 +42,7 @@ export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, descript
           //videoRef.getDownloadURL(),
           imageRef.getDownloadURL()
         ])
-          .then(([audioURL, /*videoURL*/, imageURL]) => {
+          .then(([audioURL, /*videoURL,*/ imageURL]) => {
             // Salvar as URLs no Firestore ou realizar as ações desejadas
             console.log('URLs do áudio, vídeo e imagem:', audioURL, /*videoURL,*/ imageURL);
     

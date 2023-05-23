@@ -83,7 +83,7 @@ const Navbar = () => {
     const description = descriptionRef.current.value; // Usando a referência para o input da descrição
   
     if (imageFile && /*videoFile &&*/ audioFile && title && description) {
-      uploadFiles(imageFile, /*videoURL,*/ audioFile, title, description);
+      uploadFiles(imageFile, /*videoFile,*/ audioFile, title, description);
     } else {
       console.error('Por favor, preencha todos os campos');
     }
