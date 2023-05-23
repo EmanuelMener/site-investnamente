@@ -552,3 +552,49 @@ export const ErrorMessage = styled.div`
   color: red;
   margin-bottom: 10px;
 `;
+
+export const divprogressUpload = styled.div`
+  width: 60%;
+  //background-color:yellow;
+  margin-bottom: 2rem;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  position:relative;
+`;
+
+export const spanProgressPercentage = styled.span`
+  position:absolute;
+  width:10%;
+  font-size: 1rem;
+  //background-color:red;
+  display:flex;
+`;
+
+export const progressUpload = styled.progress`
+
+  width: 100%;
+  height: 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 2rem;
+  //border: solid #c4c4c499 0.1px;
+  border-radius: 5px;
+  color:red;
+
+  &::-webkit-progress-bar {
+  background-color: #c4c4c420;
+  border-radius: 5px;
+  color:red;
+  }
+
+  &::-webkit-progress-value {
+  background-color: #007bff;
+  border-radius: 5px;}
+`;
+
+export const spanProgress = styled.span`
+  margin-top: 2rem;
+`;
+

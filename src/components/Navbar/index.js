@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect  } from "react";
 import * as C from "./style";
 import { BiSearchAlt2, BiConversation, BiHelpCircle, BiNotification, BiUpload } from "react-icons/bi";
 import { MdExitToApp } from "react-icons/md";
@@ -26,8 +26,15 @@ const Navbar = () => {
   const [users, setUsers] = useState([]);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
 
+  const progressRef = useRef(null);
 
+  useEffect(() => {
+    if (progressRef.current) {
+      progressRef.current.value = uploadProgress;
+    }
+  }, [uploadProgress]);
 
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -77,21 +84,28 @@ const Navbar = () => {
     }
   };
 
-  const handleUpload = (e) => {
+  const handleUpload = async (e) => {
     e.preventDefault();
   
-    const imageFile = document.querySelector('#image').files[0];
-    //const videoFile = document.querySelector('#video').files[0];
-    const audioFile = document.querySelector('#audio').files[0];
-    const title = titleRef.current.value; // Usando a referência para o input do título
-    const description = descriptionRef.current.value; // Usando a referência para o input da descrição
+    const imageFile = document.querySelector("#image").files[0];
+    const audioFile = document.querySelector("#audio").files[0];
+    const title = titleRef.current.value;
+    const description = descriptionRef.current.value;
   
-    if (imageFile && /*videoFile &&*/ audioFile && title && description) {
-      uploadFiles(imageFile, /*videoFile,*/ audioFile, title, description, setUploadStatus, setUploadProgress);
+    if (imageFile && audioFile && title && description) {
+      setUploading(true); // Habilitar o modo de upload
+      try {
+        await uploadFiles(imageFile, audioFile, title, description, setUploadStatus, setUploadProgress);
+        setUploading(false); // Desabilitar o modo de upload quando o upload estiver completo
+      } catch (error) {
+        console.error(error);
+        setUploading(false); // Desabilitar o modo de upload se ocorrer um erro
+      }
     } else {
-      console.error('Por favor, preencha todos os campos');
+      console.error("Por favor, preencha todos os campos");
     }
   };
+  
   
   
 
@@ -121,12 +135,22 @@ const Navbar = () => {
     
         {(user?.email === "modooncontabilidade@gmail.com" || user?.email === "emenezes.jem@gmail.com") && (
         <C.bntUpload onClick={lidarCliqueUpload}>
+          {uploading ? (
+            <>
+              <C.progressUpload ref={progressRef} max="100"></C.progressUpload>
+              <C.spanProgressPercentage>{uploadProgress}%</C.spanProgressPercentage>
+            </>
+          ) : (
+            <>
           <AiOutlineCloudUpload />
           <C.PopupContainerUPLOAD open={popupOpenUpload}>
             <C.FormContainer onClick={(event) => event.stopPropagation()}>
-              <div>
-                <progress value={uploadProgress} max="100"></progress>
-              </div>
+           
+              <C.divprogressUpload>
+                <C.progressUpload ref={progressRef} max="100"></C.progressUpload>
+                <C.spanProgressPercentage>{uploadProgress}%</C.spanProgressPercentage>
+              </C.divprogressUpload>
+           
               <C.FormField>
                 <C.Label htmlFor="image">Imagem:</C.Label>
                 <C.Input type="file" id="image" accept="image/*" />
@@ -147,6 +171,8 @@ const Navbar = () => {
                 <C.Label htmlFor="description">Descrição:</C.Label>
                 <C.Textarea id="description" ref={descriptionRef} />
               </C.FormField>
+
+
               <C.Button onClick={handleUpload}>
                 Enviar
                 <C.bntUpload>
@@ -154,10 +180,12 @@ const Navbar = () => {
                 </C.bntUpload>
               </C.Button>
 
-              {uploadStatus && <span>{uploadStatus}</span>}
+              {uploadStatus && <C.spanProgress>{uploadStatus}</C.spanProgress>}
 
             </C.FormContainer>
           </C.PopupContainerUPLOAD>
+          </>
+          )}
         </C.bntUpload>
         )}
 
