@@ -17,62 +17,72 @@ const storage = firebase.storage();
 const firestore = firebase.firestore();
 
 export const uploadFiles = (imageFile, /*videoFile,*/ audioFile, title, description, setUploadStatus, setUploadProgress) => {
-    const storageRef = storage.ref();
-    const imageRef = storageRef.child(`images/${imageFile.name}`);
-    //const videoRef = storageRef.child(`videos/${videoFile.name}`);
-    const audioRef = storageRef.child(`audios/${audioFile.name}`);
+  const storageRef = storage.ref();
+  const imageRef = storageRef.child(`images/${imageFile.name}`);
+  //const videoRef = storageRef.child(`videos/${videoFile.name}`);
+  const audioRef = storageRef.child(`audios/${audioFile.name}`);
+
+  const imageUploadTask = imageRef.put(imageFile);
+  //const videoUploadTask = videoRef.put(videoFile);
+  const audioUploadTask = audioRef.put(audioFile);
   
-    const imageUploadTask = imageRef.put(imageFile);
-    //const videoUploadTask = videoRef.put(videoFile);
-    const audioUploadTask = audioRef.put(audioFile);
-    
-    // Manipular o progresso do upload aqui
-    audioUploadTask.on('state_changed', (audioSnapshot) => {
-      const audioProgress = (audioSnapshot.bytesTransferred / audioSnapshot.totalBytes) * 100;
-      console.log('Progresso do upload de áudio:', audioProgress);
-      setUploadProgress(audioProgress);
-    });
-    
-    // Manipular o sucesso do upload e salvar URLs no Firestore aqui
-    Promise.all([audioUploadTask, /*videoUploadTask,*/ imageUploadTask])
-      .then(() => {
-        console.log('Todos os arquivos foram enviados com sucesso.');
-        setUploadProgress(0);
-    
-        Promise.all([
-          audioRef.getDownloadURL(),
-          //videoRef.getDownloadURL(),
-          imageRef.getDownloadURL()
-        ])
-          .then(([audioURL, /*videoURL,*/ imageURL]) => {
-            // Salvar as URLs no Firestore ou realizar as ações desejadas
-            console.log('URLs do áudio, vídeo e imagem:', audioURL, /*videoURL,*/ imageURL);
-    
-            // Exemplo de como salvar no Firestore
-            firestore.collection('iformacoesDoEp').add({
-              audioURL,
-              /*videoURL,*/
-              imageURL,
-              titulo: title,
-              descricao: description
-            })
-              .then((docRef) => {
-                const docId = docRef.id;
-                console.log('Documento salvo no Firestore com ID:', docId);
-        
-                setUploadStatus("Upload concluído com sucesso!");
-              })
-              .catch((error) => {
-                console.error('Erro ao salvar no Firestore:', error);
-              });
+  // Obtém a data e hora atual no formato "dd/mm/aa hh:mm:ss"
+  const currentDate = new Date();
+  const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
+  const formattedDate = currentDate.toLocaleDateString("pt-BR", options);
+  
+  // Obtém a duração do áudio em minutos
+  const audioDuration = Math.floor(audioFile.duration / 60);
+  
+  // Manipular o progresso do upload aqui
+  audioUploadTask.on('state_changed', (audioSnapshot) => {
+    const audioProgress = (audioSnapshot.bytesTransferred / audioSnapshot.totalBytes) * 100;
+    console.log('Progresso do upload de áudio:', audioProgress);
+    setUploadProgress(audioProgress);
+  });
+  
+  // Manipular o sucesso do upload e salvar URLs no Firestore aqui
+  Promise.all([audioUploadTask, /*videoUploadTask,*/ imageUploadTask])
+    .then(() => {
+      console.log('Todos os arquivos foram enviados com sucesso.');
+      setUploadProgress(0);
+
+      Promise.all([
+        audioRef.getDownloadURL(),
+        //videoRef.getDownloadURL(),
+        imageRef.getDownloadURL()
+      ])
+        .then(([audioURL, /*videoURL,*/ imageURL]) => {
+          // Salvar as URLs no Firestore ou realizar as ações desejadas
+          console.log('URLs do áudio, vídeo e imagem:', audioURL, /*videoURL,*/ imageURL);
+
+          // Exemplo de como salvar no Firestore
+          firestore.collection('iformacoesDoEp').add({
+            audioURL,
+            /*videoURL,*/
+            imageURL,
+            titulo: title,
+            descricao: description,
+            dataUpload: formattedDate, // Salva a data e hora formatada
+            tempoAudio: audioDuration, // Salva a duração do áudio em minutos
           })
-          .catch((error) => {
-            console.error('Erro ao obter URLs de download:', error);
-          });
-      })
-      .catch((error) => {
-        console.error('Erro ao enviar os arquivos:', error);
-      });
-    
-  };
+            .then((docRef) => {
+              const docId = docRef.id;
+              console.log('Documento salvo no Firestore com ID:', docId);
+
+              setUploadStatus("Upload concluído com sucesso!");
+            })
+            .catch((error) => {
+              console.error('Erro ao salvar no Firestore:', error);
+            });
+        })
+        .catch((error) => {
+          console.error('Erro ao obter URLs de download:', error);
+        });
+    })
+    .catch((error) => {
+      console.error('Erro ao enviar os arquivos:', error);
+    });
+};
+
   

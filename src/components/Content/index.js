@@ -172,8 +172,8 @@ const Content = () => {
                   {item.descricao && item.descricao.length > 15 ? `${item.descricao.substring(0, 15)}...` : item.descricao}
                 </C.ListaCardDescription>
                 <C.DataTempoLista>
-                  Data de Upload: {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
-                  Tempo do Áudio: {item.tempoAudio} minutos {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
+                  {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
+                  {item.tempoAudio} {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
                 </C.DataTempoLista>
 
               </C.ListadivTextosTTDD>

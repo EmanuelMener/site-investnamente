@@ -788,3 +788,5 @@ export const PlayButton = styled.button`
   height:100%;
   border-radius: 8px;
 `;
+
+export const ListaButtonPlay = styled.div``;
