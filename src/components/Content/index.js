@@ -115,7 +115,7 @@ const Content = () => {
         const data = await fetchData(db);
         setInfoEp(data);
       } catch (error) {
-        console.error("Erro ao buscar os dados da coleção infoEp:", error);
+        console.error("Erro ao buscar os dados da coleção iformacoesDoEp:", error);
       }
     };
 
@@ -133,9 +133,12 @@ const Content = () => {
         <Slider {...settingsEmAlta}>
         {iformacoesDoEp.map((item) => (
           <C.CardContainer key={item.id}>
-            <C.CardImage src={item.imageURL} alt="Imagem" />
-            <C.CardTitle>{item.titulo}</C.CardTitle>
-            <C.CardDescription>{item.descricao}</C.CardDescription>
+            <C.divImg><C.CardImage src={item.imageURL} alt="Imagem" /></C.divImg>
+            
+            <C.divTextosTTDD>
+              <C.CardTitle>{item.titulo}</C.CardTitle>
+              <C.CardDescription>{item.descricao}</C.CardDescription>
+              </C.divTextosTTDD>
           </C.CardContainer>
         ))}
         </Slider>

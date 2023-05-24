@@ -57,43 +57,64 @@ export const ContentContainer = styled.div`
   height: 30rem;
   border-radius: 8px !important;
   margin-top: 100px;
-  background-color: #26272B;
+  //background-color: #26272B;
   padding: 0 1rem;
 `;
 
 export const CardContainer = styled.div`
   display: flex !important;
-  flex-direction: column;
-  justify-content: center !important;
+  //flex-direction: column;
+  justify-content: space-between !important;
   align-items: center !important;
   width: 30%; /* Ajuste a largura conforme necessário */
-  height: 20rem;
-  background: #ffffff;
+  height: 10rem;
+  background: #26272B;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  border: 5px solid #26272B;
-  padding: 16px;
+  border: 5px solid #070709;
+  //padding: 0.5rem;
   margin: 0 8px !important; /* Ajuste o espaçamento horizontal conforme necessário */
 `;
 
-export const CardImage = styled.img`
-
-  width: 100%;
-  height: 10rem;
+export const divImg = styled.div`
+  width: 10rem;
+  height: 100%;
+  //background-color:red;
+  //border: 1px solid #c4c4c4;
   border-radius: 8px;
-  margin-bottom: 16px;
+`;
+
+export const CardImage = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+`;
+
+export const divTextosTTDD = styled.div`
+  width: auto;
+  min-width: 60%;
+  height: 100%;
+  //background-color:red;
+  //border: 1px solid #c4c4c4;
+  border-radius: 8px;
+
+  display:flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const CardTitle = styled.h3`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #555555;
+  //color: #555555;
 `;
 
 export const CardDescription = styled.p`
   font-size: 14px;
-  color: #555555;
+  color: #c4c4c470;
 `;
 
 
