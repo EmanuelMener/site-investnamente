@@ -8,6 +8,7 @@ import { settingsEmAlta, settingsComentarios } from "./carroussel";
 import "./slider.css";
 import { MdSend } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
+import { BiShuffle, BiSkipPrevious, BiPlay, BiPause, BiSkipNext, BiSync } from "react-icons/bi";
 import { auth, db } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -18,9 +19,16 @@ import { collection, getDocs } from "firebase/firestore"
 const fetchData = async (db) => {
   const docsCol = collection(db, 'iformacoesDoEp');
   const docSnap = await getDocs(docsCol);
-  const docList = docSnap.docs.map(doc => doc.data());
+  const docList = docSnap.docs.map(doc => {
+    const data = doc.data();
+    // Adicione as propriedades de data de upload e tempo do áudio
+    data.dataUpload = doc.data().dataUpload; // Substitua "dataUpload" pelo nome da propriedade de data de upload
+    data.tempoAudio = doc.data().tempoAudio; // Substitua "tempoAudio" pelo nome da propriedade de tempo do áudio
+    return data;
+  });
   return docList;
 };
+
 
 const Content = () => {
   const [comments, setComments] = useState([]);
@@ -122,10 +130,10 @@ const Content = () => {
     fetchInfoEp();
   }, []);
   
-//BtnUpload
-
+//variável maximo
 
   return (
+    
     <C.Container>
       <C.ContentContainer>
         <h1>Em Alta</h1>
@@ -138,11 +146,47 @@ const Content = () => {
             <C.divTextosTTDD>
               <C.CardTitle>{item.titulo}</C.CardTitle>
               <C.CardDescription>{item.descricao}</C.CardDescription>
-              </C.divTextosTTDD>
+            </C.divTextosTTDD>
           </C.CardContainer>
         ))}
         </Slider>
       </C.ContentContainer>
+
+      {/* Lista de Eps Disponíveis*/}
+      
+      <C.listaDeEpsDsiponiveis>
+        <C.DivH1Ep>
+          <h1>Epsódios</h1>
+        </C.DivH1Ep>
+        <C.telaMaisListEp>
+          {iformacoesDoEp.map((item) => (
+            <C.listaEp key={item.id}>
+              <C.ListadivImg>
+                <C.CardImage src={item.imageURL} alt="Imagem" />
+              </C.ListadivImg>
+              <C.ListadivTextosTTDD>
+                <C.ListaCardTitle>
+                  {item.titulo && item.titulo.length > 21 ? `${item.titulo.substring(0, 21)}...` : item.titulo}
+                </C.ListaCardTitle>
+                <C.ListaCardDescription>
+                  {item.descricao && item.descricao.length > 15 ? `${item.descricao.substring(0, 15)}...` : item.descricao}
+                </C.ListaCardDescription>
+                <C.DataTempoLista>
+                  Data de Upload: {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
+                  Tempo do Áudio: {item.tempoAudio} minutos {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
+                </C.DataTempoLista>
+
+              </C.ListadivTextosTTDD>
+            </C.listaEp>
+          ))}
+        </C.telaMaisListEp>
+
+        <C.btnVerMaisLista>Ver Mais</C.btnVerMaisLista>
+      </C.listaDeEpsDsiponiveis>
+
+
+      
+
 
       <C.ContentContainerComentarios>
         <h1>Comentários</h1>
@@ -181,33 +225,33 @@ const Content = () => {
                     )}
                   </C.InforUser>
                   <C.contornoDoBoxMessagem
-                    className={`content-text ${
-                      comment.text.length > 60 ? "expandable" : ""
-                    } ${expandedComments.includes(doc.id) ? "open" : ""}`}
-                  >
-                    <C.contentText
                       className={`content-text ${
-                        comment.text.length > 60 ? "expandable" : ""
+                        comment.text && comment.text.length > 60 ? "expandable" : ""
                       } ${expandedComments.includes(doc.id) ? "open" : ""}`}
                     >
-                      {comment.text.length > 60
-                        ? comment.text.slice(0, 60) + "..."
-                        : comment.text}
-                    </C.contentText>
-                    {comment.text.length > 70 && !showFullComment && (
-                      <>
-                        <C.btnVerMais
-                          onClick={() => {
-                            toggleExpandComment(doc.id);
-                            setPopupOpenMaisComentario(!popupOpenMaisComentario);
-                          }}
-                        >
-                          {expandedComments.includes(doc.id) ? "Ver mais" : "Ver mais"}
-                        </C.btnVerMais>
-
-                      </>
-                    )}
+                      <C.contentText
+                        className={`content-text ${
+                          comment.text && comment.text.length > 50 ? "expandable" : ""
+                        } ${expandedComments.includes(doc.id) ? "open" : ""}`}
+                      >
+                        {comment.text && comment.text.length > 50
+                          ? `${comment.text.slice(0, 40)}...`
+                          : comment.text}
+                      </C.contentText>
+                      {comment.text && comment.text.length > 70 && !showFullComment && (
+                        <>
+                          <C.btnVerMais
+                            onClick={() => {
+                              toggleExpandComment(doc.id);
+                              setPopupOpenMaisComentario(!popupOpenMaisComentario);
+                            }}
+                          >
+                            {expandedComments.includes(doc.id) ? "Ver mais" : "Ver mais"}
+                          </C.btnVerMais>
+                        </>
+                      )}
                   </C.contornoDoBoxMessagem>
+
                 </C.ContentComentario>
               </C.boxComentario>
             );

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh; /* Subtrai a altura do Navbar do total da altura da viewport */
@@ -632,3 +633,158 @@ export const ConfirmationButtonRed = styled.button`
 `;
 
 
+// LISTA DE EP DISPONÍVEIS
+
+export const listaDeEpsDsiponiveis = styled.div`
+  width: 80%;
+  max-width: 55rem;
+  height: 1200px !important;
+  border-radius: 8px !important;
+  margin-top: 100px;
+  //background-color: #26272B;
+  border: 1px solid #f4f4f510;
+  padding: 1rem;
+  text-align: start;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+`;
+
+export const DivH1Ep = styled.div`
+  text-align: start;
+  margin-bottom: 1rem;
+  //background: red;
+  width: 100%;
+  height: auto;
+`;
+
+export const telaMaisListEp = styled.div`
+  position: relative;
+  width: 100%;
+  height: 80%;
+  //border: 1px solid #f4f4f510;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  overflow: auto;
+  transition: all 0.3s ease;
+  &::-webkit-scrollbar {
+    width: 0.5rem; /* Largura da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #07070950; /* Cor do fundo da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #E8005060; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Raio do canto da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
+  }
+`;
+
+export const listaEp = styled.button`
+  position:relative;
+  width: 100%;
+  height: 4rem;
+  background-color: #ffffff05;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  border:none;
+  color: #c4c4c4;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  &:hover{
+    background-color: #26272B;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    /* Altera o conteúdo para a seta para baixo ao passar o mouse por cima */
+    content: "";
+  }
+  
+`;
+
+export const ListadivImg = styled.div`
+  width: 4rem;
+  height: 4rem;
+  //background-color:red;
+  //border: 1px solid #c4c4c4;
+  border-radius: 8px;
+`;
+
+export const ListaCardImage = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+`;
+
+export const ListadivTextosTTDD = styled.div`
+  width: auto;
+  //width: 45%;
+  height: auto;
+  //background-color:red;
+  //border: 1px solid #c4c4c4;
+  border-radius: 8px;
+
+  display:flex;
+  align-items: center;
+  justify-content: start;
+  //text-align: center;
+  margin-left: 1.2rem;
+`;
+
+export const ListaCardTitle = styled.h3`
+  font-size: 18px;
+  font-weight: bold;
+  //color: #555555;
+  text-transform: uppercase;
+`;
+
+export const ListaCardDescription = styled.p`
+  font-size: 14px;
+  //color: #c4c4c470;
+  margin-left: 1rem;
+`;
+
+export const DataTempoLista = styled.div`
+  position:absolute;
+  right:10px;
+`;
+
+export const btnVerMaisLista = styled.button`
+  background-color: #3F3F3F30;
+  color: #333;
+  border: none;
+  border-radius:1rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 14px;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  &:hover{
+    background-color: #3F3F3F70;
+    color: #ffffff50;
+  }
+`;
+
+
+export const PlayButton = styled.button`
+  position: absolute;
+  width: 100%;
+  height:100%;
+  border-radius: 8px;
+`;
