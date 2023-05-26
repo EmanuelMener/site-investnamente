@@ -205,3 +205,14 @@ export const AudioPlayerContainer = styled.div`
 export const BsSoundwave = styled.div`
   /* Estilos do container do player de áudio */
 `;
+
+export const boxDivMaisControles = styled.div`
+  width: 20%;
+  height: 100%;
+  background-color: #26272B;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

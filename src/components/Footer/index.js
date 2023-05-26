@@ -21,6 +21,8 @@ const Footer = ({ selectedEpisode }) => {
 
         {/* Renderize o player de áudio aqui */}
         <C.DivcentralControll><audio src={selectedEpisode.audioURL} controls autoPlay /> </C.DivcentralControll>
+
+        <C.boxDivMaisControles>Mais Controles</C.boxDivMaisControles>
       </C.Container>
     </C.boxContainer>
 
