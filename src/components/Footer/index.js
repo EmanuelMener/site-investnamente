@@ -1,5 +1,6 @@
 import React from "react";
 import * as C from "./style";
+import "./style.css"
 
 const Footer = ({ selectedEpisode }) => {
   if (!selectedEpisode) {

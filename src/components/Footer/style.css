@@ -1,0 +1,29 @@
+audio {
+    background-color: #c4c4c4;
+    padding: 10px;
+    border-radius: 8px;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Outros estilos */
+  }
+  
+audio::-webkit-media-controls-start-playback-button {
+  background-color: #26272B;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Outros estilos */
+}
+
+audio::-webkit-media-controls-enclosure {
+  /*border: 1px solid red;*/
+  color: white;
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Outros estilos */
+}

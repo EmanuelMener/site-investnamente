@@ -216,3 +216,4 @@ export const boxDivMaisControles = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
