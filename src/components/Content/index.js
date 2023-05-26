@@ -194,11 +194,21 @@ const handlePlayAudio = (audioURL, episode) => {
               ))}
             </C.telaMaisListEp>
             <C.btnVerMaisLista>Ver Mais</C.btnVerMaisLista>
-          </C.listaDeEpsDsiponiveis>
+      </C.listaDeEpsDsiponiveis>
 
 
       <C.ContentContainerComentarios>
-        <h1>Comentários</h1>
+        <div className="divTituloBox">
+          <h1>Comentários </h1>
+          <C.btnVerMaisGeral                             
+            onClick={() => {
+              toggleExpandComment()
+              setPopupOpenMaisComentario(!popupOpenMaisComentario);
+            }}
+          >
+            Ver Mais
+          </C.btnVerMaisGeral></div>
+        
         <C.formComentarios onSubmit={handleSubmitComment}>
           <C.inputComentario type="text" value={newComment} onChange={handleCommentChange} placeholder="Digite seu comentário..." />
           <C.btnEnviarComentario type="submit">Enviar <MdSend /></C.btnEnviarComentario>
@@ -251,7 +261,7 @@ const handlePlayAudio = (audioURL, episode) => {
                         <>
                           <C.btnVerMais
                             onClick={() => {
-                              toggleExpandComment(doc.id);
+                              toggleExpandComment(doc.id)
                               setPopupOpenMaisComentario(!popupOpenMaisComentario);
                             }}
                           >
@@ -263,7 +273,7 @@ const handlePlayAudio = (audioURL, episode) => {
 
                 </C.ContentComentario>
               </C.boxComentario>
-            );
+            )
           })}
         </Slider>
           {showConfirmationDialog && (
@@ -272,7 +282,7 @@ const handlePlayAudio = (audioURL, episode) => {
                   Deseja realmente excluir o comentário?
 
                 <C.ConfirmationButtons>
-                  <C.ConfirmationButtonRed onClick={() => {deleteComment(commentToDelete); setShowConfirmationDialog(false);}} > Sim</C.ConfirmationButtonRed>
+                  <C.ConfirmationButtonRed onClick={() => {deleteComment(commentToDelete); setShowConfirmationDialog(false)}} > Sim</C.ConfirmationButtonRed>
                   <C.ConfirmationButton onClick={() => {setShowConfirmationDialog(false);}}>Não</C.ConfirmationButton>
                 </C.ConfirmationButtons>
 
@@ -299,7 +309,7 @@ const handlePlayAudio = (audioURL, episode) => {
 
                   {commentsMaisMensagens.slice().reverse().map((comment) => {
                     const commentDate = comment.timestamp?.toDate();
-                    const isCurrentUserComment = comment.userId === user.uid;
+                    const isCurrentUserComment = comment.userId === user.uid
 
                     return (
                       <C.boxMensagensMaisMensagens key={comment.id}>

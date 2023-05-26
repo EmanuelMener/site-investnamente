@@ -8,3 +8,22 @@
 
 
 /*teste box mensage*/
+.cAfhwK {
+  width: 80%;
+  max-width: 55rem;
+  height: 18rem;
+  border-radius: 8px!important;
+  margin-top: 100px;
+  padding: 0 1rem;
+  /*color: transparent;*/
+  /*background-color: red;*/
+}
+
+.divTituloBox{
+  width: 100%;
+  height: 5rem;
+  /*background-color: red;*/
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}

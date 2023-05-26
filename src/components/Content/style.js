@@ -766,13 +766,29 @@ export const DataTempoLista = styled.div`
 `;
 
 export const btnVerMaisLista = styled.button`
-  background-color: #3F3F3F30;
-  color: #333;
+  background-color: #3F3F3F90;
+  color: #ffffff50;
   border: none;
   border-radius:1rem;
   padding: 0.3rem 0.8rem;
   font-size: 14px;
   margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  &:hover{
+    background-color: #3F3F3F70;
+    color: #ffffff50;
+  }
+`;
+
+export const btnVerMaisGeral = styled.button`
+  background-color: #3F3F3F90;
+  color: #ffffff50;
+  border: none;
+  border-radius:1rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 14px;
+  margin-left: 1rem;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   &:hover{
