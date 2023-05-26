@@ -186,17 +186,17 @@ const handlePlayAudio = (audioURL) => {
                       {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
                       {item.tempoAudio} {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
                     </C.DataTempoLista>
-                    <C.BtnReproduzirAudio onClick={() => handlePlayAudio(item.audioURL)}>
-                      Reproduzir Áudio
-                    </C.BtnReproduzirAudio> {/* Adicione este botão para reproduzir o áudio */}
                   </C.ListadivTextosTTDD>
+                  <C.BtnReproduzirAudio onClick={() => handlePlayAudio(item.audioURL)}>
+                     <C.iconBtPlay><BiPlay/></C.iconBtPlay> 
+                  </C.BtnReproduzirAudio> {/* Adicione este botão para reproduzir o áudio */}
                   {showPopup && audioURL === item.audioURL && (
-                    <div className="audio-player-popup">
+                    <C.popupPlayerAudioEp className="audio-player-popup">
                       <audio src={audioURL} controls autoPlay={isPlaying} />
-                      <button className="close-button" onClick={() => setShowPopup(false)}>
+                      <button styled={"position=absolute"} className="close-button" onClick={() => setShowPopup(false)}>
                         Fechar
                       </button>
-                    </div>
+                    </C.popupPlayerAudioEp>
                   )}
                 </C.listaEp>
               ))}

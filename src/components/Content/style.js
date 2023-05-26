@@ -792,6 +792,51 @@ export const PlayButton = styled.button`
 export const ListaButtonPlay = styled.div``;
 
 export const BtnReproduzirAudio = styled.button`
-  // Estilos do botão Reproduzir Áudio
-  // ...
+  width: 100%;
+  height:100%;
+  position: absolute;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  border-radius: 8px;
+  &:hover{
+    color: #E80050;
+    background-color: #07070950;
+  }
+`;
+
+export const iconBtPlay = styled.div`
+  width: 2rem;
+  height: 2rem;
+  background-color: #c4c4c4;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  font-size: 2rem;
+
+  ${BtnReproduzirAudio}:hover & {
+    display: flex; /* Exibimos o ícone ao passar o mouse sobre BtnReproduzirAudio */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+  
+`;
+
+
+export const popupPlayerAudioEp = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  transition: all 0.3s ease;
 `;
