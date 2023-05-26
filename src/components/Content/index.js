@@ -12,6 +12,7 @@ import { BiShuffle, BiSkipPrevious, BiPlay, BiPause, BiSkipNext, BiSync } from "
 import { auth, db } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import Footer from "../Footer";
 
 import firebase from "firebase/compat/app";
 import { collection, getDocs } from "firebase/firestore"
@@ -133,13 +134,12 @@ const Content = () => {
   }, []);
   
 //variável maximo
+const [selectedEpisode, setSelectedEpisode] = useState(null);
 
-const handlePlayAudio = (audioURL) => {
-  // Aqui você pode exibir um pop-up com o player de áudio
-  // e reproduzir o áudio usando a URL fornecida
-  // Você pode usar um estado para controlar a exibição do pop-up
+const handlePlayAudio = (audioURL, episode) => {
   setAudioURL(audioURL);
   setShowPopup(true);
+  setSelectedEpisode(episode);
 };
 
 
@@ -171,7 +171,7 @@ const handlePlayAudio = (audioURL) => {
             </C.DivH1Ep>
             <C.telaMaisListEp>
               {iformacoesDoEp.map((item) => (
-                <C.listaEp key={item.id}>
+                <C.listaEp key={item.id} onClick={() => handlePlayAudio(item.audioURL, item)}>
                   <C.ListadivImg>
                     <C.CardImage src={item.imageURL} alt="Imagem" />
                   </C.ListadivImg>
@@ -187,17 +187,9 @@ const handlePlayAudio = (audioURL) => {
                       {item.tempoAudio} {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
                     </C.DataTempoLista>
                   </C.ListadivTextosTTDD>
-                  <C.BtnReproduzirAudio onClick={() => handlePlayAudio(item.audioURL)}>
+                  <C.BtnReproduzirAudio onClick={() => handlePlayAudio(item.audioURL, item)}>
                      <C.iconBtPlay><BiPlay/></C.iconBtPlay> 
                   </C.BtnReproduzirAudio> {/* Adicione este botão para reproduzir o áudio */}
-                  {showPopup && audioURL === item.audioURL && (
-                    <C.popupPlayerAudioEp className="audio-player-popup">
-                      <audio src={audioURL} controls autoPlay={isPlaying} />
-                      <button styled={"position=absolute"} className="close-button" onClick={() => setShowPopup(false)}>
-                        Fechar
-                      </button>
-                    </C.popupPlayerAudioEp>
-                  )}
                 </C.listaEp>
               ))}
             </C.telaMaisListEp>
@@ -359,7 +351,7 @@ const handlePlayAudio = (audioURL) => {
         <Slider/>
 
       </ C.spaceHeightFooter >
-
+      <Footer selectedEpisode={selectedEpisode} />
     </C.Container>
   );
 };

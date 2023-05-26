@@ -1,18 +1,42 @@
 import styled from "styled-components";
 
+export const boxContainer = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  width: calc(100vw - 4.5rem); /* Subtrai a altura do Navbar do total da altura da viewport */
+  margin-left: -4rem;
+  height: 7rem;
+  //background-color: red;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  flex-direction: column; /* Adicionado */
+`;
+
 export const Container = styled.div`
-    position: fixed;
-    display:flex;
-    bottom: 0;
-    width: 100vw;
-    height: 7rem;
-    border-top: 1px solid #B5B5B5;
-    background-color: rgba(88,88,92, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(0px);
-    z-index: 2; /* Defina um valor maior que o z-index do carrossel */
-    transition: all 0.3s ease;
-    
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid #b5b5b5;
+  background-color: rgba(88, 88, 92, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+`;
+
+
+export const boxIfGeralEp = styled.div`
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const InfoDoEP = styled.div`
@@ -25,17 +49,42 @@ export const InfoDoEP = styled.div`
     margin: 0 3rem;
 `;
 
+export const divImgConv = styled.div`
+  width: 5rem;
+  height: 5rem;
+`;
 export const InfoDoEPimgConv = styled.img`
+    object-fit: cover;
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
+`;
+
+export const divInfoEpConv = styled.div`
+  width: auto;
+  height: 100%;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 1rem;
+`;
+
+export const DivcentralControll = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+   align-items: center;
+   justify-content: center;
+   //margin-left: 1rem;
 `;
 
 export const InfoDoEPimgConvTEXTO = styled.h1`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    //margin-left: 1rem;
     width: 20.4rem;
     color: #DADADA;
     font-size: 18px;

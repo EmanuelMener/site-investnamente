@@ -29,9 +29,10 @@ const App = () => {
         <>
             <Navbar />
             <Sidebar />
-            <Footer />
+            
             <Content />
-
+            <Footer />
+        
         </>
     );
 };
