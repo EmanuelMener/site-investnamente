@@ -790,3 +790,8 @@ export const PlayButton = styled.button`
 `;
 
 export const ListaButtonPlay = styled.div``;
+
+export const BtnReproduzirAudio = styled.button`
+  // Estilos do botão Reproduzir Áudio
+  // ...
+`;

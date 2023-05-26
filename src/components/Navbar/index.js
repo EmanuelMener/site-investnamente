@@ -21,12 +21,19 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const [popupOpenPerfil, setPopupOpen] = useState(false);
   const [popupOpenInformacao, setPopupOpen2] = useState(false);
+  const [popupOpenContato, setPopupContato] = useState(false); //contato
   const [popupOpenUpload, setPopupOpen3] = useState(false);
   const [exibirExcluirConta, setExibirExcluirConta] = useState(false);
   const [users, setUsers] = useState([]);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
+
+  const [openMessage, setOpenMessage] = useState(false);
+
+  const handleOpenMessage = () => {
+    setOpenMessage(true);
+  };
 
   const progressRef = useRef(null);
 
@@ -51,6 +58,10 @@ const Navbar = () => {
 
   const lidarCliqueInformacao = () => {
     setPopupOpen2(!popupOpenInformacao);
+  };
+
+  const lidarCliqueContato = () => {
+    setPopupContato(!popupOpenContato);
   };
 
   const lidarCliqueUpload = () => {
@@ -105,9 +116,6 @@ const Navbar = () => {
       console.error("Por favor, preencha todos os campos");
     }
   };
-  
-  
-  
 
   return (
     <C.Container>
@@ -119,7 +127,31 @@ const Navbar = () => {
 
       <C.contaEnav>
 
-        <C.btnContato> CONTATO</C.btnContato>
+        <C.btnContato onClick={lidarCliqueContato}>CONTATO</C.btnContato>
+       
+        <C.MensagemContainer open={popupOpenContato}>
+          <C.MensagemTitulo>Envie uma mensagem</C.MensagemTitulo>
+          <C.MensagemForm>
+            <C.headMensagemForm>
+              <C.divUsuarioMensagem></C.divUsuarioMensagem>
+              <C.nomeUsuario>
+                <h2>{user?.displayName?.length > 15 ? user.displayName.slice(0, 15) + "..." : user?.displayName}</h2>
+              </C.nomeUsuario>
+
+            </C.headMensagemForm>
+            <C.bodyMensagemForm>
+              <C.boxMensagemAmigo>Olá</C.boxMensagemAmigo>
+              <C.boxMensagemMe>Ola</C.boxMensagemMe>
+            </C.bodyMensagemForm>
+            <C.footerMensagemForm>
+              <C.divFooterBarra>
+                <C.MensagemInput placeholder="Digite sua mensagem" />
+                <C.MensagemEnviarBtn>Enviar</C.MensagemEnviarBtn>
+              </C.divFooterBarra>
+            </C.footerMensagemForm>
+          </C.MensagemForm>
+        </C.MensagemContainer>
+     
 
         <C.btnInf onClick={lidarCliqueInformacao}>
           <BiHelpCircle />

@@ -52,7 +52,9 @@ const Content = () => {
 
 
   const [iformacoesDoEp, setInfoEp] = useState([]);
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [audioURL, setAudioURL] = useState('');
+  const [isPlaying, setIsPlaying] = useState(false);
   
   const handleToggleShowFullComment = () => {
     setShowFullComment(!showFullComment);
@@ -132,6 +134,15 @@ const Content = () => {
   
 //variável maximo
 
+const handlePlayAudio = (audioURL) => {
+  // Aqui você pode exibir um pop-up com o player de áudio
+  // e reproduzir o áudio usando a URL fornecida
+  // Você pode usar um estado para controlar a exibição do pop-up
+  setAudioURL(audioURL);
+  setShowPopup(true);
+};
+
+
   return (
     
     <C.Container>
@@ -155,37 +166,43 @@ const Content = () => {
       {/* Lista de Eps Disponíveis*/}
       
       <C.listaDeEpsDsiponiveis>
-        <C.DivH1Ep>
-          <h1>Epsódios</h1>
-        </C.DivH1Ep>
-        <C.telaMaisListEp>
-          {iformacoesDoEp.map((item) => (
-            <C.listaEp key={item.id}>
-              <C.ListadivImg>
-                <C.CardImage src={item.imageURL} alt="Imagem" />
-              </C.ListadivImg>
-              <C.ListadivTextosTTDD>
-                <C.ListaCardTitle>
-                  {item.titulo && item.titulo.length > 21 ? `${item.titulo.substring(0, 21)}...` : item.titulo}
-                </C.ListaCardTitle>
-                <C.ListaCardDescription>
-                  {item.descricao && item.descricao.length > 15 ? `${item.descricao.substring(0, 15)}...` : item.descricao}
-                </C.ListaCardDescription>
-                <C.DataTempoLista>
-                  {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
-                  {item.tempoAudio} {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
-                </C.DataTempoLista>
-
-              </C.ListadivTextosTTDD>
-            </C.listaEp>
-          ))}
-        </C.telaMaisListEp>
-
-        <C.btnVerMaisLista>Ver Mais</C.btnVerMaisLista>
-      </C.listaDeEpsDsiponiveis>
-
-
-      
+            <C.DivH1Ep>
+              <h1>Epsódios</h1>
+            </C.DivH1Ep>
+            <C.telaMaisListEp>
+              {iformacoesDoEp.map((item) => (
+                <C.listaEp key={item.id}>
+                  <C.ListadivImg>
+                    <C.CardImage src={item.imageURL} alt="Imagem" />
+                  </C.ListadivImg>
+                  <C.ListadivTextosTTDD>
+                    <C.ListaCardTitle>
+                      {item.titulo && item.titulo.length > 21 ? `${item.titulo.substring(0, 21)}...` : item.titulo}
+                    </C.ListaCardTitle>
+                    <C.ListaCardDescription>
+                      {item.descricao && item.descricao.length > 15 ? `${item.descricao.substring(0, 15)}...` : item.descricao}
+                    </C.ListaCardDescription>
+                    <C.DataTempoLista>
+                      {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
+                      {item.tempoAudio} {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}
+                    </C.DataTempoLista>
+                    <C.BtnReproduzirAudio onClick={() => handlePlayAudio(item.audioURL)}>
+                      Reproduzir Áudio
+                    </C.BtnReproduzirAudio> {/* Adicione este botão para reproduzir o áudio */}
+                  </C.ListadivTextosTTDD>
+                  {showPopup && audioURL === item.audioURL && (
+                    <div className="audio-player-popup">
+                      <audio src={audioURL} controls autoPlay={isPlaying} />
+                      <button className="close-button" onClick={() => setShowPopup(false)}>
+                        Fechar
+                      </button>
+                    </div>
+                  )}
+                </C.listaEp>
+              ))}
+            </C.telaMaisListEp>
+            <C.btnVerMaisLista>Ver Mais</C.btnVerMaisLista>
+          </C.listaDeEpsDsiponiveis>
 
 
       <C.ContentContainerComentarios>

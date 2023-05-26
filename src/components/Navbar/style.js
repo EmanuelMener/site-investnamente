@@ -598,3 +598,156 @@ export const spanProgress = styled.span`
   margin-top: 2rem;
 `;
 
+// mesagem contato
+
+export const MensagemContainer = styled.div`
+  position: fixed;
+  display: ${props => (props.open ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 80px; /* Altura da navbar */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.92); /* Cor escura com transparência */
+  z-index: 9999;
+`;
+
+export const MensagemTitulo = styled.h2`
+  /* Estilos do título da troca de mensagens */
+`;
+
+export const MensagemForm = styled.form`
+  width: 90%;
+  max-width: 500px;
+  height: 80%;
+  background-image: url("/img/imaFundoApp.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+`;
+
+export const headMensagemForm = styled.div`
+  width: 100%;
+  height: 20%;
+  background-color: #c4c4c470;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+`;
+
+export const bodyMensagemForm = styled.div`
+  width: 100%;
+  height: 60%;
+  background-image: url("/img/imaFundoApp.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: auto;
+  transition: all 0.3s ease;
+  &::-webkit-scrollbar {
+    width: 0.5rem; /* Largura da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #07070950; /* Cor do fundo da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #E8005060; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Raio do canto da barra de rolagem */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
+  }
+`;
+
+
+export const footerMensagemForm = styled.div`
+  width: 100%;
+  height: 20%;
+  background-color: #c4c4c470;
+  border-radius: 0 0 8px 8px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+`;
+
+export const divFooterBarra = styled.div`
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 50%;
+  border-radius: 50rem;
+  background-color:red;
+`;
+
+export const MensagemInput = styled.input`
+    width: 80%;
+    height: 100%;
+    border-radius: 50rem 0 0 50rem ;
+    border: none;
+    padding: 1rem;
+    outline: none;
+`;
+
+export const MensagemEnviarBtn = styled.button`
+    width: 20%;
+    height: 100%;
+    border-radius:  0 50rem 50rem 0;
+    border: none;
+`;
+
+export const divUsuarioMensagem = styled.div`
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #26272B;
+  transition: all 0.3s ease;
+  background-color:red;
+  overflow: hidden;
+`;
+
+export const imgFundo = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+export const nomeUsuario = styled.div`
+  width: auto;
+  height: auto;
+`;
+
+export const boxMensagemAmigo = styled.div`
+  width: auto;
+  max-width: 45%;
+  height: auto;
+  border-radius: 0 8px 8px 8px;
+  background-color: #c4c4c4;
+  color: #000;
+  margin-top: 0.5rem;
+`;
+
+export const boxMensagemMe = styled.div`
+  width: auto;
+  max-width: 45%;
+  height: auto;
+  border-radius: 8px 0 8px 8px;
+  background-color: #000;
+  color: #fff;
+  margin-top: 0.5rem;
+  right: 0;
+`;

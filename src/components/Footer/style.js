@@ -139,3 +139,20 @@ export const bntPlay2 = styled.div`
     content: "↓";
   }
 `;
+
+
+export const ControlsContainer = styled.div`
+  /* Estilos do container dos controles */
+`;
+
+export const ControlButton = styled.button`
+  /* Estilos dos botões de controle */
+`;
+
+export const AudioPlayerContainer = styled.div`
+  /* Estilos do container do player de áudio */
+`;
+
+export const BsSoundwave = styled.div`
+  /* Estilos do container do player de áudio */
+`;
