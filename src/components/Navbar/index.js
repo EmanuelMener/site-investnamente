@@ -165,7 +165,7 @@ const Navbar = () => {
 
         <C.btnSino><BiNotification /></C.btnSino>
     
-        {(user?.email === "modooncontabilidade@gmail.com" || user?.email === "emenezes.jem@gmail.com" || user?.email === "investnamente@gmail.com") && (
+        {(user?.email === "modooncontabilidade@gmail.com" || user?.email === "francisco.passos@ufac.br" || user?.email === "emenezes.jem@gmail.com" || user?.email === "investnamente@gmail.com") && (
         <C.bntUpload onClick={lidarCliqueUpload}>
           {uploading ? (
             <>
