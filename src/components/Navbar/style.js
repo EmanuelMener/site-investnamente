@@ -27,6 +27,10 @@ export const barraProgresso = styled.div`
   height: 45px;
   border-radius: 8px;
   background-color: #26272B;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const barraProgressoICON = styled.div`
@@ -62,6 +66,9 @@ export const contaEnav = styled.div`
   align-items: center;
 
   //background-color: #FFFF5510;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const btnContato = styled.button`
@@ -750,4 +757,15 @@ export const boxMensagemMe = styled.div`
   color: #fff;
   margin-top: 0.5rem;
   right: 0;
+`;
+
+
+export const maisNavMediaQuery = styled.div`
+  width: auto;
+  height: auto;
+  background-color: red;
+  display: none;
+  @media (max-width: 780px) {
+    display: block;
+  }
 `;

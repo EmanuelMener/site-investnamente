@@ -120,6 +120,7 @@ const Navbar = () => {
   return (
     <C.Container>
       <C.Img src="img/logo-investnamente2.png" alt="Logo Investnament" />
+      <C.maisNavMediaQuery>Ola</C.maisNavMediaQuery>
       <C.barraProgresso>
         <C.barraProgressoICON><BiSearchAlt2 /></C.barraProgressoICON>
         <C.barraProgressoINPUT placeholder="Pesquisar por episódio..." />

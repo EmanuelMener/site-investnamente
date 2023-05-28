@@ -32,6 +32,19 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
   }
+
+  @media (max-width: 780px) {
+    //display: none;
+    width: 100%;
+    //height: 30%;
+    //align-items: start;
+    justify-content: start;
+    margin: 0 auto;
+
+    &::-webkit-scrollbar {
+    width: 0px; /* Largura da barra de rolagem */
+  }
+  }
 `;
 
 
@@ -64,18 +77,22 @@ export const ContentContainer = styled.div`
 
 export const CardContainer = styled.div`
   display: flex !important;
-  //flex-direction: column;
   justify-content: space-between !important;
   align-items: center !important;
-  width: 30%; /* Ajuste a largura conforme necessário */
+  width: 30%;
   height: 10rem;
   background: #26272B;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   border: 5px solid #070709;
   padding: 0 1rem 0 0;
-  //padding: 0.5rem;
-  margin: 0 8px !important; /* Ajuste o espaçamento horizontal conforme necessário */
+  margin: 0 8px !important;
+
+  @media (max-width: 780px) {
+    display: block !important;
+    height: 20rem;
+    padding: 0;
+  }
 `;
 
 export const divImg = styled.div`
@@ -84,6 +101,12 @@ export const divImg = styled.div`
   //background-color:red;
   //border: 1px solid #c4c4c4;
   border-radius: 8px;
+
+  @media (max-width: 780px) {
+    //display: none;
+    width: 100%;
+    height: 70%;
+  }
 `;
 
 export const CardImage = styled.img`
@@ -105,6 +128,12 @@ export const divTextosTTDD = styled.div`
   align-items: start;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 780px) {
+    //display: none;
+    width: 100%;
+    height: 30%;
+    align-items: start;
+  }
 `;
 
 export const CardTitle = styled.h3`
@@ -654,6 +683,11 @@ export const listaDeEpsDsiponiveis = styled.div`
   align-items: center;
   justify-content: space-between;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.);
+
+  @media (max-width: 780px) {
+    width: 90%;
+    height: 50%;
+  }
 `;
 
 export const DivH1Ep = styled.div`
@@ -719,6 +753,10 @@ export const listaEp = styled.button`
     content: "";
   }
   
+  @media (max-width: 780px) {
+    width: 100%;
+    min-height: 10rem;
+  }
 `;
 
 export const ListadivImg = styled.div`
@@ -860,3 +898,4 @@ export const popupPlayerAudioEp = styled.div`
   z-index: 1;
   transition: all 0.3s ease;
 `;
+

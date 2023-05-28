@@ -149,13 +149,13 @@ const handlePlayAudio = (audioURL, episode) => {
       <C.ContentContainer>
         <h1>Em Alta</h1>
 
-        <Slider {...settingsEmAlta}>
+        <Slider className="card" {...settingsEmAlta}>
         {iformacoesDoEp.map((item) => (
           <C.CardContainer key={item.id}>
             <C.divImg><C.CardImage src={item.imageURL} alt="Imagem" /></C.divImg>
             
             <C.divTextosTTDD>
-              <C.CardTitle>{item.titulo && item.titulo.length > 55 ? `${item.titulo.substring(0, 55)}...` : item.titulo}</C.CardTitle>
+              <C.CardTitle>{item.titulo && item.titulo.length > 25 ? `${item.titulo.substring(0, 25)}...` : item.titulo}</C.CardTitle>
               <C.CardDescription>{item.descricao && item.descricao.length > 75 ? `${item.descricao.substring(0, 75)}...` : item.descricao}</C.CardDescription>
             </C.divTextosTTDD>
           </C.CardContainer>

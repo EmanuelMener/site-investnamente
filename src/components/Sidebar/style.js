@@ -20,6 +20,9 @@ export const Container = styled.div`
     //justify-content: center;
     transition: all 0.3s ease;
   }
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const menuHome = styled.div`

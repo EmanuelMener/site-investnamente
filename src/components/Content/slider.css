@@ -27,3 +27,11 @@
   align-items: center;
   justify-content: start;
 }
+
+
+@media(max-width:700px) { 
+    .card { 
+      height: 22rem;
+      /*background-color: red;*/
+     } 
+}
