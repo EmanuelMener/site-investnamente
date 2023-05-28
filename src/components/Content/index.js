@@ -207,11 +207,12 @@ const handlePlayAudio = (audioURL, episode) => {
             }}
           >
             Ver Mais
-          </C.btnVerMaisGeral></div>
+          </C.btnVerMaisGeral>
+        </div>
         
         <C.formComentarios onSubmit={handleSubmitComment}>
           <C.inputComentario type="text" value={newComment} onChange={handleCommentChange} placeholder="Digite seu comentário..." />
-          <C.btnEnviarComentario type="submit">Enviar <MdSend /></C.btnEnviarComentario>
+          <C.btnEnviarComentario type="submit"> <MdSend /></C.btnEnviarComentario>
         </C.formComentarios>
 
         <Slider {...settingsComentarios}>
@@ -233,7 +234,7 @@ const handlePlayAudio = (audioURL, episode) => {
                         <span>Usuário</span>
                       )}
                       <C.labelEmailPerfil>
-                        <span>{comment.userName}</span>
+                        <span>{comment.userName && comment.userName.length > 7 ? `${comment.userName.substring(0, 7)}...` : comment.userName}</span>
                       </C.labelEmailPerfil>
                       <C.CommentTimestamp>{commentDate?.toLocaleString()}</C.CommentTimestamp>
                     </C.perfilUser>
@@ -297,7 +298,7 @@ const handlePlayAudio = (audioURL, episode) => {
                   <C.cabecaMaisMensagens>
                     <C.formComentariosMaisMensagens onSubmit={handleSubmitComment}>
                         <C.inputComentarioMaisMensagens type="text" value={newComment} onChange={handleCommentChange} placeholder="Digite seu comentário..." />
-                        <C.btnEnviarComentarioMaisMensagens type="submit">Enviar <MdSend /></C.btnEnviarComentarioMaisMensagens>
+                        <C.btnEnviarComentarioMaisMensagens type="submit"> <MdSend /></C.btnEnviarComentarioMaisMensagens>
                     </C.formComentariosMaisMensagens> 
 
                     <C.btnFecharMaisMensagens onClick={() => setPopupOpenMaisComentario(false)}>
@@ -323,7 +324,7 @@ const handlePlayAudio = (audioURL, episode) => {
                               <span>Usuário</span>
                             )}
                             <C.labelEmailPerfil>
-                              <span>{comment.userName}</span>
+                              <span>{comment.userName && comment.userName.length > 10 ? `${comment.userName.substring(0, 10)}...` : comment.userName}</span>
                             </C.labelEmailPerfil>
                             <C.CommentTimestamp>{commentDate?.toLocaleString()}</C.CommentTimestamp>
                             {isCurrentUserComment && (
@@ -333,7 +334,7 @@ const handlePlayAudio = (audioURL, episode) => {
                             )}
                           </C.perfilUser>                        
                         </C.UsuarioMaisMensagens>
-                        {comment.text}
+                         <C.textoMensagemMaisMensagem>{comment.text}</C.textoMensagemMaisMensagem> 
                       </C.boxMensagensMaisMensagens>
                     );
                   })}

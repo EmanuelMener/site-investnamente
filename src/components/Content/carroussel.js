@@ -19,6 +19,7 @@ export const settingsEmAlta = {
         breakpoint: 480,
         settings: {
           slidesToShow: 1.0,
+          dots: false,
         },
       },
     ],
@@ -44,6 +45,7 @@ export const settingsEmAlta = {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          arrows: false,
         },
       },
     ],

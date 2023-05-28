@@ -183,12 +183,23 @@ export const ContentContainerComentarios = styled.div`
   padding: 0 1rem;
 
   //position:relative;
+  @media (max-width: 780px) {
+    width: 90%;
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 95%;
+    padding: 0 0.5rem;
+  }
 `;
 
 export const perfilUser = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  //background-color: red;
+  margin-right: 1rem;
 `;
 
 export const formComentarios = styled.form`
@@ -240,6 +251,14 @@ export const btnEnviarComentario = styled.button`
     color: #F4F4F5;
   }
   transition: all 0.3s ease;
+
+  @media (max-width: 780px) {
+
+    width: 18%;
+    padding: 0.5rem;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
 `;
 
 export const boxComentario = styled.div`
@@ -299,11 +318,16 @@ export const InforUser = styled.div`
 
 export const divUsuario = styled.div`
   display: flex;
-  width: 45px;
-  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid #26272B;
+
+  @media (max-width: 780px) {
+    max-width: 25px;
+    max-height: 25px;
+  }
 `;
 
 export const imgUser = styled.img`
@@ -364,14 +388,14 @@ export const btnExcluirComentario = styled.button`
 `;
 
 export const CommentTimestamp = styled.div`
-  width: auto;
+  width: 50%;
   height: 1rem;
   background-color: #c4c4c450;
   font-size: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 1rem;
   border-radius: 8px;
   margin-left: 1rem;
 `;
@@ -414,8 +438,6 @@ export const spaceHeightFooter = styled.div`
   padding: 0 1rem;
 `;
 
-
-
 export const btnVerMais = styled.button`
   background-color: #3F3F3F30;
   color: #333;
@@ -440,6 +462,7 @@ export const PopupContainerMaisComentario = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
   transition: all 0.3s ease;
+  
 `;
 
 
@@ -455,6 +478,11 @@ export const corpoMaisMensagens = styled.div`
   border-radius: 8px;
 
   transition: all 0.3s ease;
+
+  @media (max-width: 780px) {
+    width: 90%;
+    padding: 0.5rem;
+  }
 `;
 
 export const cabecaMaisMensagens = styled.div`
@@ -494,6 +522,10 @@ export const inputComentarioMaisMensagens = styled.input`
   &:focus{
     border-bottom: 1.5px solid #0080BF;
   }
+
+  @media (max-width: 780px) {
+   width: 80%;
+  }
 `;
 
 export const btnEnviarComentarioMaisMensagens = styled.button`
@@ -519,6 +551,15 @@ export const btnEnviarComentarioMaisMensagens = styled.button`
     color: #F4F4F5;
   }
   transition: all 0.3s ease;
+
+  @media (max-width: 780px) {
+
+    width: 18%;
+    padding: 0.5rem;
+    justify-content: center;
+    font-size: 1.5rem;
+    }
+  
 `;
 
 export const telaMaisMensagens = styled.div`
@@ -550,6 +591,17 @@ export const telaMaisMensagens = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
   }
+
+  @media (max-width: 780px) {
+    &::-webkit-scrollbar {
+      width: 5px; /* Largura da barra de rolagem */
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.1rem;
+    //background-color:red;
+  }
 `;
 
 export const btnFecharMaisMensagens = styled.button`
@@ -558,6 +610,11 @@ export const btnFecharMaisMensagens = styled.button`
   border-radius: 8px;
   border: none;
   transition: all 0.3s ease;
+
+  @media (max-width: 480px) {
+    width: 3rem;
+    height: 2rem;
+  }
 `;
 
 export const boxMensagensMaisMensagens = styled.div`
@@ -569,6 +626,9 @@ export const boxMensagensMaisMensagens = styled.div`
   transition: all 0.3s ease;
   //border: 1px solid #f4f4f520;
   word-wrap: break-word;
+
+  @media (max-width: 480px) {
+  }
 `;
 
 
@@ -584,12 +644,16 @@ export const UsuarioMaisMensagens = styled.div`
 
 export const divUsuarioMaisMensagens = styled.div`
   display: flex;
-  width: 2rem;
-  height: 2rem;
+  max-width: 2rem;
+  max-height: 2rem;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid #26272B;
   transition: all 0.3s ease;
+`;
+
+export const textoMensagemMaisMensagem = styled.div`
+  margin-top: 0.5rem;
 `;
 
 //Confirmação da Exclusão
@@ -857,6 +921,11 @@ export const btnVerMaisGeral = styled.button`
   &:hover{
     background-color: #3F3F3F70;
     color: #ffffff50;
+  }
+  @media (max-width: 780px) {
+    //display: none;
+    width: 100%;
+    height: 70%;
   }
 `;
 
