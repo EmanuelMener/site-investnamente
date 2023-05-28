@@ -173,7 +173,6 @@ export const menuMinhaLivrariaSpan = styled.span`
     transition: all 0.3s ease;
 `;
 
-
 export const iconsGeral = styled.div`
     height: 100%;
     width: 3.9rem;

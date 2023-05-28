@@ -13,6 +13,12 @@ export const boxContainer = styled.div`
   z-index: 9999;
   transition: all 0.3s ease;
   flex-direction: column; /* Adicionado */
+
+  @media (max-width: 780px) {
+    margin: 0 auto;
+    width: 100%;
+    height: 4rem;
+  }
 `;
 
 export const Container = styled.div`
@@ -28,30 +34,39 @@ export const Container = styled.div`
   -webkit-backdrop-filter: blur(0px);
   border-radius: 8px 8px 0 0;
   transition: all 0.3s ease;
+
+  @media (max-width: 780px) {
+    margin: 0 auto;
+    width: 95%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 5px;
+  }
 `;
 
 
 export const boxIfGeralEp = styled.div`
-  width: auto;
+  width: 70%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 780px) {
+    //background-color: red;
+    justify-content: start;
+  }
 `;
 
-export const InfoDoEP = styled.div`
-    display: flex;
-    align-items:center;
-    justify-content:space-between;
-    width: 25vw;
-    height: 100%;
-
-    margin: 0 3rem;
-`;
 
 export const divImgConv = styled.div`
   width: 5rem;
   height: 5rem;
+
+  @media (max-width: 780px) {
+    width: 3rem;
+    height: 3rem;
+  }  
 `;
 export const InfoDoEPimgConv = styled.img`
     object-fit: cover;
@@ -78,6 +93,12 @@ export const DivcentralControll = styled.div`
    align-items: center;
    justify-content: center;
    //margin-left: 1rem;
+
+   @media (max-width: 780px) {
+      width: 30%;
+      height: 100%;
+      //display: none;
+    }  
 `;
 
 export const InfoDoEPimgConvTEXTO = styled.h1`
@@ -88,12 +109,21 @@ export const InfoDoEPimgConvTEXTO = styled.h1`
     width: 20.4rem;
     color: #DADADA;
     font-size: 18px;
+
+    @media (max-width: 780px) {
+      font-size: 12px;
+      width: auto;
+    }  
 `;
 
 export const InfoDoEPimgConvTEMPO = styled.h1`
     width: 20.4rem;
     color: #757575;
     font-size: 15px;
+
+    @media (max-width: 780px) {
+      display: none;
+    }  
 `;
 
 export const centralDeControle = styled.div`
@@ -215,5 +245,19 @@ export const boxDivMaisControles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 780px) {
+      display: none;
+    }  
 `;
 
+export const btnPlay = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 3rem;
+  border: none;
+  font-size: 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;

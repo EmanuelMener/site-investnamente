@@ -15,6 +15,10 @@ export const Container = styled.div`
     background-color: #070709;
 
     transition: all 0.3s ease;
+
+    @media (max-width: 780px) {
+      
+    }
 `;
 
 export const Img = styled.img`
@@ -760,12 +764,53 @@ export const boxMensagemMe = styled.div`
 `;
 
 
+//Media Query
 export const maisNavMediaQuery = styled.div`
   width: auto;
   height: auto;
-  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //background-color: red;
   display: none;
   @media (max-width: 780px) {
     display: block;
+  }
+`;
+
+export const iconsGeral = styled.div`
+    height: 70%;
+    width: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: #e80050;
+    border: none;
+    border-radius: 8px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    &.fechado {
+    font-size: 20px;
+    height: 4rem;
+  }
+
+`;
+
+export const btnColtrollMenu = styled.button`
+  position: relative;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+  height: 4rem;
+  margin-right: 0;
+  margin-top: 0;
+  border:none;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  &.fechado {
+    font-size: 10px;
+    transition: all 0.3s ease;
   }
 `;

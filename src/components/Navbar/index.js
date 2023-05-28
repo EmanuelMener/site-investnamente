@@ -4,6 +4,7 @@ import { BiSearchAlt2, BiConversation, BiHelpCircle, BiNotification, BiUpload } 
 import { MdExitToApp } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { uploadFiles } from './uploadService';
 
 
@@ -120,7 +121,13 @@ const Navbar = () => {
   return (
     <C.Container>
       <C.Img src="img/logo-investnamente2.png" alt="Logo Investnament" />
-      <C.maisNavMediaQuery>Ola</C.maisNavMediaQuery>
+      <C.maisNavMediaQuery>
+        <C.btnColtrollMenu >
+          <C.iconsGeral> 
+              <RxHamburgerMenu />
+          </C.iconsGeral>
+        </C.btnColtrollMenu>
+      </C.maisNavMediaQuery>
       <C.barraProgresso>
         <C.barraProgressoICON><BiSearchAlt2 /></C.barraProgressoICON>
         <C.barraProgressoINPUT placeholder="Pesquisar por episódio..." />
@@ -311,9 +318,9 @@ const Navbar = () => {
           </C.PopupContainer>
         </C.btnPessoa>
 
-
-
       </C.contaEnav>
+
+
     </C.Container>
   );
 };
