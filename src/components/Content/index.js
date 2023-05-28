@@ -155,8 +155,8 @@ const handlePlayAudio = (audioURL, episode) => {
             <C.divImg><C.CardImage src={item.imageURL} alt="Imagem" /></C.divImg>
             
             <C.divTextosTTDD>
-              <C.CardTitle>{item.titulo}</C.CardTitle>
-              <C.CardDescription>{item.descricao}</C.CardDescription>
+              <C.CardTitle>{item.titulo && item.titulo.length > 55 ? `${item.titulo.substring(0, 55)}...` : item.titulo}</C.CardTitle>
+              <C.CardDescription>{item.descricao && item.descricao.length > 75 ? `${item.descricao.substring(0, 75)}...` : item.descricao}</C.CardDescription>
             </C.divTextosTTDD>
           </C.CardContainer>
         ))}
@@ -177,11 +177,11 @@ const handlePlayAudio = (audioURL, episode) => {
                   </C.ListadivImg>
                   <C.ListadivTextosTTDD>
                     <C.ListaCardTitle>
-                      {item.titulo && item.titulo.length > 21 ? `${item.titulo.substring(0, 21)}...` : item.titulo}
+                      {item.titulo && item.titulo.length > 55 ? `${item.titulo.substring(0, 55)}...` : item.titulo}
                     </C.ListaCardTitle>
-                    <C.ListaCardDescription>
+                    {/*<C.ListaCardDescription>
                       {item.descricao && item.descricao.length > 15 ? `${item.descricao.substring(0, 15)}...` : item.descricao}
-                    </C.ListaCardDescription>
+                    </C.ListaCardDescription>*/}
                     <C.DataTempoLista>
                       {item.dataUpload} {/* Substitua "dataUpload" pelo nome correto da propriedade de data de upload */}
                       {item.tempoAudio} {/* Substitua "tempoAudio" pelo nome correto da propriedade de tempo do áudio */}

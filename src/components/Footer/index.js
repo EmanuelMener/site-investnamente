@@ -14,8 +14,8 @@ const Footer = ({ selectedEpisode }) => {
         <C.boxIfGeralEp>
           <C.divImgConv><C.InfoDoEPimgConv src={selectedEpisode.imageURL} alt="Imagem" /></C.divImgConv>
           <C.divInfoEpConv>
-              <C.InfoDoEPimgConvTEXTO>{selectedEpisode.titulo}</C.InfoDoEPimgConvTEXTO>
-              <C.InfoDoEPimgConvTEMPO>{selectedEpisode.descricao}</C.InfoDoEPimgConvTEMPO>
+              <C.InfoDoEPimgConvTEXTO>{selectedEpisode.titulo && selectedEpisode.titulo.length > 21 ? `${selectedEpisode.titulo.substring(0, 21)}...` : selectedEpisode.titulo}</C.InfoDoEPimgConvTEXTO>
+              <C.InfoDoEPimgConvTEMPO>{selectedEpisode.descricao && selectedEpisode.descricao.length > 21 ? `${selectedEpisode.descricao.substring(0, 21)}...` : selectedEpisode.descricao}</C.InfoDoEPimgConvTEMPO>
             </C.divInfoEpConv>
         </C.boxIfGeralEp>
 

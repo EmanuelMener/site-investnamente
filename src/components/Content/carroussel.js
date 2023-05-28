@@ -6,7 +6,7 @@ export const settingsEmAlta = {
     speed: 500,
     slidesToShow: 1.8,
     slidesToScroll: 1,
-    //autoplay: true,
+    autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
       {

@@ -3,6 +3,7 @@ import { auth, provider } from "../../services/firebase";
 import * as C from "./style";
 import { SiGoogle } from "react-icons/si";
 import { BiHeadphone } from "react-icons/bi";
+import { BiRightArrowAlt } from "react-icons/bi";
 
 
 const Login = () => {
@@ -10,11 +11,12 @@ const Login = () => {
         auth.signInWithPopup(provider).catch(alert);
     };
     return (
+        
         <C.Div>
-            <h1>Ouça o nosso podcast <BiHeadphone /></h1>
+            <C.img src="img/logoInvertido.png" alt="Logo Investnament"/>
+            <C.h1>Ouça o nosso podcast <BiHeadphone /></C.h1>
             <C.Container>
-                <img src="img/logo-investnamente.jpg" alt="Logo Investnament" width={"300"} />
-                <C.Button onClick={handleSignin}><SiGoogle /><C.Span></C.Span> Login com Google</C.Button>
+                <C.Button onClick={handleSignin}><SiGoogle /><C.Span></C.Span> Login com Google <C.icons><BiRightArrowAlt/></C.icons></C.Button>
             </C.Container>
         </C.Div>
     )

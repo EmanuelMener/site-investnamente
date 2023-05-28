@@ -73,12 +73,13 @@ export const CardContainer = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   border: 5px solid #070709;
+  padding: 0 1rem 0 0;
   //padding: 0.5rem;
   margin: 0 8px !important; /* Ajuste o espaçamento horizontal conforme necessário */
 `;
 
 export const divImg = styled.div`
-  width: 10rem;
+  min-width: 10rem;
   height: 100%;
   //background-color:red;
   //border: 1px solid #c4c4c4;
@@ -110,12 +111,15 @@ export const CardTitle = styled.h3`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
+  margin-left: 1rem;
   //color: #555555;
 `;
 
 export const CardDescription = styled.p`
   font-size: 14px;
   color: #c4c4c470;
+  width: auto;
+  margin-left: 1rem;
 `;
 
 
@@ -638,10 +642,10 @@ export const ConfirmationButtonRed = styled.button`
 export const listaDeEpsDsiponiveis = styled.div`
   width: 80%;
   max-width: 55rem;
-  height: 1200px !important;
+  max-height: 700px !important;
   border-radius: 8px !important;
   margin-top: 100px;
-  //background-color: #26272B;
+  background-color: #26272B;
   border: 1px solid #f4f4f510;
   padding: 1rem;
   text-align: start;
@@ -649,7 +653,7 @@ export const listaDeEpsDsiponiveis = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.);
 `;
 
 export const DivH1Ep = styled.div`
@@ -704,7 +708,7 @@ export const listaEp = styled.button`
   border-radius: 8px;
   border:none;
   color: #c4c4c4;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   &:hover{
     background-color: #26272B;
     transition: all 0.3s ease;
