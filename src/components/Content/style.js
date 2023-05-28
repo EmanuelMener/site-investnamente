@@ -685,8 +685,9 @@ export const listaDeEpsDsiponiveis = styled.div`
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.);
 
   @media (max-width: 780px) {
-    width: 90%;
+    width: 95%;
     height: 50%;
+    padding: 0.3rem;
   }
 `;
 
@@ -696,6 +697,9 @@ export const DivH1Ep = styled.div`
   //background: red;
   width: 100%;
   height: auto;
+  @media (max-width: 780px) {
+    padding-left: 1rem;
+  }
 `;
 
 export const telaMaisListEp = styled.div`
@@ -727,6 +731,13 @@ export const telaMaisListEp = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background-color: #E80050; /* Cor da barra de rolagem ao passar o mouse */
   }
+
+  @media (max-width: 780px) {
+    &::-webkit-scrollbar {
+    width: 5px; /* Largura da barra de rolagem */
+  }
+  padding: 0.5rem;
+  }
 `;
 
 export const listaEp = styled.button`
@@ -755,7 +766,7 @@ export const listaEp = styled.button`
   
   @media (max-width: 780px) {
     width: 100%;
-    min-height: 10rem;
+    min-height:5rem;
   }
 `;
 
@@ -765,6 +776,10 @@ export const ListadivImg = styled.div`
   //background-color:red;
   //border: 1px solid #c4c4c4;
   border-radius: 8px;
+
+  @media (max-width: 780px) {
+    //background-color: red;
+  }
 `;
 
 export const ListaCardImage = styled.img`
@@ -775,11 +790,8 @@ export const ListaCardImage = styled.img`
 `;
 
 export const ListadivTextosTTDD = styled.div`
-  width: auto;
-  //width: 45%;
+  width: 70%;
   height: auto;
-  //background-color:red;
-  //border: 1px solid #c4c4c4;
   border-radius: 8px;
 
   display:flex;
@@ -787,24 +799,33 @@ export const ListadivTextosTTDD = styled.div`
   justify-content: start;
   //text-align: center;
   margin-left: 1.2rem;
+  @media (max-width: 780px) {
+    align-items: start;
+    justify-content: start;
+  }
 `;
 
 export const ListaCardTitle = styled.h3`
   font-size: 18px;
   font-weight: bold;
-  //color: #555555;
   text-transform: uppercase;
 `;
 
 export const ListaCardDescription = styled.p`
   font-size: 14px;
-  //color: #c4c4c470;
   margin-left: 1rem;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const DataTempoLista = styled.div`
   position:absolute;
   right:10px;
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const btnVerMaisLista = styled.button`
