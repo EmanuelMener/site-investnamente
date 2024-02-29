@@ -1,4 +1,4 @@
-# Site - Investnamente Podcast
+# Site streamming - Investnamente Podcast
 
 ![Capa](public/img/Captura%20de%20tela%202024-02-29%20022404.png)
 
