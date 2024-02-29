@@ -1,15 +1,13 @@
-# Site - Modo On Contabilidade
+# Site - Investnamente Podcast
 
-![Capa](icons/Captura%20de%20tela%202024-02-29%20020813.png)
-
-
+![Capa](public/img/Captura%20de%20tela%202024-02-29%20022404.png)
 
 
 !License: MIT
 
 ## Descrição do Projeto
 
-<p align="center">O site é umprojeto para apresentar melhor o escritório de maneira online e na web. O projeto utiliza as tecnologias HTML, CSS e JavaScript</p>
+<p align="center">O site é um projeto de play de audio de podcast do Investnament. O projeto utiliza as tecnologias HTML, CSS e JavaScript</p>
 
 ## Status do Projeto
 
