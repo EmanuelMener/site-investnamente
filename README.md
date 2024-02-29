@@ -1,4 +1,4 @@
-# Site streamming - Investnamente Podcast
+# Sistema de streamming - Investnamente Podcast
 
 ![Capa](public/img/Captura%20de%20tela%202024-02-29%20022404.png)
 
@@ -7,12 +7,12 @@
 
 ## Descrição do Projeto
 
-<p align="center">O site é um projeto de play de audio de podcast do Investnament. O projeto utiliza as tecnologias React.js, Firebase, Html, Css e Javascript</p>
+<p align="center">O site é um projeto de play de audio de podcast do Investnament. O objetivo do sistema é o de armazenar, distribuir e mensurar os episódios do podcast. O projeto utiliza as tecnologias React.js, Firebase, Html, Css e Javascript</p>
 
 ## Status do Projeto
 
 <h4 align="center"> 
-	🚧  Site - Investnamente 🚀 Em construção...  🚧
+	🚧  Sistema de streamming - Investnamente 🚀 Em construção...  🚧
 </h4>
 
 ## Abas e Demonstração da Aplicação
